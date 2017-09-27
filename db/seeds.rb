@@ -1,0 +1,52 @@
+Camp.destroy_all
+Course.destroy_all
+Mentor.destroy_all
+
+Course.create([
+    {name: "iPhoneアプリプログラミングコース", img_url: "./assets/images/course/iPhone.png"},
+    {name: "Androidアプリプログラミングコース", img_url: "./assets/images/course/Android.png"},
+    {name: "Unity®ゲームプログラミングコース（2D・3D）", img_url: "./assets/images/course/Unity.png"},
+    {name: "Webデザインコース（HTML/CSS）", img_url: "./assets/images/course/webD.png"},
+    {name: "Webサービスプログラミングコース（Ruby）", img_url: "./assets/images/course/webS.png"},
+    {name: "映像制作コース", img_url: "./assets/images/course/Movie.png"},
+    {name: "アニメーションコース", img_url: "./assets/images/course/Animation.png"},
+    {name: "デザイナーコース（Photoshop/Illustrator）", img_url: "./assets/images/course/Designer.png"},
+    {name: "メディアアートプログラミングコース", img_url: "./assets/images/course/MediaArt.png"},
+    {name: "ゲームクリエイター体験（2D）コース", img_url: "./assets/images/course/2D.png"},
+    {name: "Minecraftプログラミングコース", img_url: "./assets/images/course/Minecraft.png"},
+    {name: "デジタルミュージックコース", img_url: "./assets/images/course/DTM.png"},
+    {name: "Maya 3DCGコース", img_url: "./assets/images/course/Maya.png"},
+    {name: "初音ミクV3コース", img_url: "./assets/images/course/Miku.png"},
+    {name: "LINEスタンプクリエイターコース", img_url: "./assets/images/course/Line.png"},
+    {name: "IoT入門 with MESH コース", img_url: "./assets/images/course/IoT.png"},
+    {name: "カメラ＆フォトグラフィコース", img_url: "./assets/images/course/Camera.png"},
+    ])
+    
+Mentor.create([
+    {name: "バッハ", img_url: "./assets/images/mentors/bach.jpg"},
+    {name: "ちゃーはん", img_url: "./assets/images/mentors/cha-han.jpg"},
+    {name: "デイジー", img_url: "./assets/images/mentors/daisy.jpg"},
+    {name: "デップ", img_url: "./assets/images/mentors/deppu.jpg"},
+    {name: "えんほう", img_url: "./assets/images/mentors/enhou.jpg"},
+    {name: "ふなみん", img_url: "./assets/images/mentors/funamin.jpg"},
+    {name: "ゴディバ", img_url: "./assets/images/mentors/godiva.jpg"},
+    {name: "いちげん", img_url: "./assets/images/mentors/ichigen.jpg"},
+    {name: "いわのこ", img_url: "./assets/images/mentors/iwanoko.jpg"},
+    {name: "かおる", img_url: "./assets/images/mentors/kaoru.jpg"},
+    {name: "けんちゃん", img_url: "./assets/images/mentors/kenchan.jpg"},
+    {name: "kenty", img_url: "./assets/images/mentors/kenty.jpg"},
+    {name: "こばとん", img_url: "./assets/images/mentors/kobaton.jpg"},
+    {name: "りさてぃん", img_url: "./assets/images/mentors/lisatin.jpg"},
+    {name: "まこ", img_url: "./assets/images/mentors/mako.jpg"},
+    {name: "もるもる", img_url: "./assets/images/mentors/morumoru.jpg"},
+    {name: "ながた", img_url: "./assets/images/mentors/nagata.jpg"},
+    {name: "ニーザ", img_url: "./assets/images/mentors/ni-za.jpg"},
+    {name: "ノコノコ", img_url: "./assets/images/mentors/nokonoko.jpg"},
+    {name: "おっしぃ", img_url: "./assets/images/mentors/ossy.jpg"},
+    {name: "さんちゃん", img_url: "./assets/images/mentors/sanchan.jpg"},
+    {name: "しゃもじ", img_url: "./assets/images/mentors/syamoji.jpg"},
+    {name: "しのきん", img_url: "./assets/images/mentors/shinokin.jpg"},
+    {name: "サブウェイ", img_url: "./assets/images/mentors/subway.jpg"},
+    {name: "とし", img_url: "./assets/images/mentors/toshi.jpg"},
+    {name: "ツーブロ", img_url: "./assets/images/mentors/twoblo.jpg"},
+    ])
