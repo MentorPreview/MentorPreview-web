@@ -10,10 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170926080316) do
+ActiveRecord::Schema.define(version: 20171004081238) do
+
+  create_table "camp_courses", force: :cascade do |t|
+    t.integer "camp_id"
+    t.integer "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "camps", force: :cascade do |t|
     t.string "name"
+    t.integer "campus_id"
+    t.string "img_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "campus", force: :cascade do |t|
+    t.string "official_name"
+    t.string "common_name"
+    t.string "university_name"
+    t.string "campus_name"
+    t.string "postal_code"
+    t.string "address"
+    t.float "lat"
+    t.float "lng"
+    t.string "img_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "course_types", force: :cascade do |t|
+    t.integer "name"
+    t.integer "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -21,6 +51,20 @@ ActiveRecord::Schema.define(version: 20170926080316) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.string "img_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mentor_camps", force: :cascade do |t|
+    t.integer "camp_id"
+    t.integer "mentor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mentor_courses", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "mentor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

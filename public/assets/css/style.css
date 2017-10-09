@@ -5,6 +5,41 @@
 	outline:none;
 }
 
+header{
+	min-width: 1000px;
+	height:70px;
+	padding:30px 30px 10px;
+	margin-bottom: 20px;
+	border-bottom: 2px solid #ccc;
+}
+
+header .logo{
+	float:left;
+	display: inline-block;
+	height:50px;
+	font-size: 40px;
+}
+
+header .menu{
+	margin-left: 100px;
+	width:350px;
+	height:50px;
+	float:left;
+}
+
+header .menu .item{
+	padding-top: 28px;
+	width:24%;
+	display:inline-block;
+	text-align: center;
+	/*user-select:none;*/
+}
+
+header .menu .item:hover{
+	color:#83efe3;;
+	cursor: pointer;
+}
+
 .container{
 	width: calc(100%-30px);
 	padding:0 30px;
@@ -15,7 +50,7 @@
 	padding:10px;
 	border:1px solid #ccc;
 	margin:auto;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 
 .content:after { /*floatの解除、ここがポイント*/
@@ -48,6 +83,10 @@ h2{
 	margin-bottom:5px;
 }
 
+.items-box{
+	margin:12px 0;
+}
+
 /*メンター一覧*/
 .img-box{
 	float: left;
@@ -61,6 +100,7 @@ h2{
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
+	cursor: pointer;
 }
 
 .img-box .img-info{
@@ -109,7 +149,6 @@ h2{
 }
 
 
-
 .img-box:hover .img-text{
 	opacity: 1;
 	z-index: 2;
@@ -145,12 +184,11 @@ h2{
 
 .filter + .container{
 	position:fixed;
-	top:30%;
 	padding:0 30px;
-	width: calc(100%-30px);
+	width: calc(100% - 60px);
 	z-index: 4;
-	
 	display: none;
+	text-align:center;
 }
 
 .filter.active + .container{
@@ -158,12 +196,41 @@ h2{
 }
 
 .filter + .container .content{
-	margin-left:20%;
+	width:90%;
+	margin:auto;
 	border:none;
 }
 
+.filter.add-modal + .container{
+	top:30%;
+}
+
+.filter.modal + .container{
+	top:3%;
+}
+
+.filter.above-modal{
+	background:rgba(255,255,255,0.4);
+	z-index: 5;
+}
+
+.filter.above-modal + .container{
+	top:30%;
+	right:0;
+	left:0;
+	margin:auto;
+	width:40%;
+	background:#fff;
+	z-index: 6;
+	padding-bottom: 40px;
+	border-radius: 10px;
+	box-shadow:1px 1px 10px 2px rgba(0, 0, 0, 0.2);
+}
+
+
 .close-modal-button{
 	margin-left:550px;
+	margin-bottom: 20px;
 	border:none;
 	width:55px;
 	height:55px;
@@ -180,15 +247,45 @@ h2{
 	outline : none;
 }
 
-.close-modal-button:hover{
+.choose-name{
+	margin-bottom:12px;
+	height:30px;
+	width:100%;
+	text-align: center;
+	overflow:scroll;
+}
+
+.close-button-box{
+	width:100%;
+	height:30px;
+}
+
+.close-above-modal-button{
+	float:right;
+	margin-bottom: 3px;
+	border:none;
+	width:30px;
+	height:30px;
+	padding-bottom:20px;
+	font-size: 22px;
+	border-radius: 50%;
+	background:none;
+	color: #333;
+	-ms-user-select: none; /* IE 10+ */
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	outline : none;
+}
+
+.close-modal-button:hover,.close-above-modal-button:hover{
 	background: #ccc;
 }
 
-.close-modal-button:active{
+.close-modal-button:active,.close-above-modal-button:active{
 	background: #777;
 }
-
-
 
 input[type="text"]{
 	background: rgba(255,255,255,0.8);
@@ -236,7 +333,6 @@ input[type="submit"]:hover{
 	-webkit-user-select: none;
 	user-select: none;
 	outline : none;
-	text-decoration: underline;
 }
 
 .open-modal-button:hover{
@@ -245,4 +341,103 @@ input[type="submit"]:hover{
 
 .open-modal-button:active{
 	color: #777;
+}
+
+.course-order-button{
+	border:none;
+	background:none;
+	margin-left: 8px;
+	font-size:16px;
+	color: #ccc;
+	-ms-user-select: none; /* IE 10+ */
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
+	outline : none;
+}
+
+.course-order-button:hover{
+	color: #83efe3;
+}
+
+.course-order-button:active{
+	color: #777;
+}
+
+.filter.modal + .container .modal-img{
+	width:200px;
+	border-radius: 10px;
+}
+
+#map{
+	width:100%;
+	height:600px;
+}
+
+#map .campus-name{
+
+}
+
+#map .campus-name:hover{
+	color: #83efe3;
+	cursor: pointer;
+}
+
+#map .campus-img{
+	width:80px;
+	border-radius: 5px;
+}
+
+#map .campus-camp{
+	
+}
+
+#map .campus-camp:hover{
+	color: #83efe3;
+	cursor: pointer;
+}
+
+.loader,.above-loader{
+	margin: 0 0 2em;
+	height: 100px;
+	width: 20%;
+	text-align: center;
+	padding: 1em;
+	margin: 0 auto 1em;
+	display: inline-block;
+	vertical-align: top;
+}
+
+
+
+/*
+  Set the color of the icon
+*/
+svg path,
+svg rect{
+  fill: #83efe3;
+}
+
+.small-img{
+	display: none;
+	width:50px;
+	border-radius:10%;
+	margin:2px;
+	transition:0.3s;
+	opacity: 0;
+}
+
+.ajax-mentor-choose{
+	cursor: pointer;
+}
+
+.edit-button{
+	color: #777;
+	font-size:12px;
+	cursor: pointer;
+}
+
+.edit-button:hover{
+	color: #83efe3;
 }

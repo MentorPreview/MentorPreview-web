@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="content">
+        <div id="map"></div>
+    </div>
+</div>
+
+<script>
+    function initMap() {
+    // Create a map object and specify the DOM element for display.
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 35.658587, lng: 139.745425},
+      zoom: 12
+    });
+    google.maps.event.addDomListener(window, "resize", function() {
+        var center = map.getCenter();
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(center);
+    });
+    <% @campus.each do |campus| %>
+    var contentString<%= campus.id %> = 
+        '<div>' + 
+        '<h3 class="campus-name"><%= campus.common_name %></h3>' + 
+        '<img class="campus-img" src="<%= campus.img_url %>">' + 
+        <% campus.camps.each do |camp| %>
+        '<div class="campus-camp"><%= camp.name %></div>' +
+        <% end %>
+        '</div>';
+    var infowindow<%= campus.id %> = new google.maps.InfoWindow({
+          content: contentString<%= campus.id %>
+        });
+    var marker<%= campus.id %> = new google.maps.Marker({
+        position: {lat: <%= campus.lat %>, lng: <%= campus.lng %>},
+        map: map,
+        icon: {url: '/assets/images/campus/university2.png',scaledSize: new google.maps.Size(58, 69)},
+        title: '<%= campus.common_name %>',
+    });
+    marker<%= campus.id %>.addListener('click', function() {
+          infowindow<%= campus.id %>.open(map, marker<%= campus.id %>);
+        });
+    <% end %>
+    }
+  
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcPPAW-9zF9vB7iq94GjUSoD3zJ-HhkoQ&callback=initMap"
+async defer></script>

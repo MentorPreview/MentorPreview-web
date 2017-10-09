@@ -2,15 +2,44 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
-	<title>タイトル</title>
+	<title>MentorPreview</title>
+    <style>
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 	<link href="https://fonts.googleapis.com/css?family=Asap+Condensed" rel="stylesheet">
 	<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
+	<link rel="shortcut icon" href="/favicon.ico">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 	<header>
-		
+		<div><img src="/assets/images/mentor_preview_logo.png" class="logo" alt="PentorPreview"></div>
+		<div class="menu">
+			<div id="mypage-button" class="item">MyPage</div>
+			<div id="preview-button" class="item">Preview</div>
+			<div id="data-button" class="item">Data</div>
+			<div id="gallary-button" class="item">Gallary</div>
+		</div>
 	</header>
 	<%= yield %>
 </body>
+<script>
+	($("#mypage-button").click(function(){
+		window.location.href = '/';
+	}));
+	($("#preview-button").click(function(){
+		window.location.href = '/preview';
+	}));
+	($("#data-button").click(function(){
+		window.location.href = '/data';
+	}));
+	($("#gallary-button").click(function(){
+		window.location.href = '/gallary';
+	}));
+</script>
+<script type="text/javascript" src="/assets/js/script.js"></script>
 </html>

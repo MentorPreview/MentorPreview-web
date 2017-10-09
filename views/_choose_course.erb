@@ -1,0 +1,191 @@
+<div class="filter above-modal" id="course-choose-modal">
+</div>
+<div class="container">
+    <div class="content">
+        <div id="mentor-data camp-data" class="mentor-modal-button" hidden>
+			<div id="mentor-id camp-id" value=""></div>
+			<img id="mentor-img camp-img" src="">
+			<h3  id="mentor-name camp-name"></h3>
+		</div>
+        <div class="close-button-box"><button class="close-above-modal-button">×</button></div>
+        <div class="items-box">
+            <div id="choose-course"><h2 class="choose-name">Course</h2></div>
+            <%= erb :_above_loader ,locals: {loader_id: "course-choose-item"} %>
+        </div>
+	</div>
+</div>
+<script>
+    ($(".choose-mentor-course-button,.choose-camp-course-button").on('click',function(){
+        var div = $(this);
+        var id = div.attr('value');
+        var divClass = $(this).attr('class');
+        console.log("." + divClass + " activate.");
+        
+        $(".close-above-modal-button").attr('value',divClass);
+        
+        $(".ajax-course-choose").remove();
+        console.log("loading mentor course edit.");
+        
+        var ajaxUrlBase = "";
+        var dataId_1 = "";
+        var data = {};
+        if(divClass == "choose-mentor-course-button"){
+            ajaxUrlBase = "./mentor/courses";
+            dataId_1 = "mentorId";
+        }else if(divClass == "choose-camp-course-button"){
+            ajaxUrlBase = "./camp/courses";
+            dataId_1 = "campId";
+        }
+        data[dataId_1] = id;
+        console.log("data is {" + dataId_1 + ": " + id + " }");
+        $.ajax({
+          type: "POST",
+          url: ajaxUrlBase + "/edit",
+          data: data,
+          success: function(html){
+            $("#choose-course").append(html);
+            $(".above-loader#course-choose-item").fadeOut(100);
+            
+            $(".ajax-course-choose").each(function(i,item){
+                $(item).delay(100).fadeIn(10);
+            });
+            
+            // $(".ajax-course-choose").on({
+            //     "mouseenter": function(){
+            //         var courseName = $(this).attr('data');
+            //         $("#choose-course h2").text(courseName);
+            //     },
+            //     "mouseleave": function(){
+            //         $("#choose-course h2").text("Course");
+            //     }
+            // });
+            
+            $(".ajax-course-choose").on('click',function(){
+                var courseId = $(this).attr('value');
+                data["courseId"] = courseId;
+                console.log("data is {" + dataId_1 + ": " + data[dataId_1] + ", courseId: " + courseId + " }");
+                if($(this).hasClass('on')){
+                    console.log("off mentor " + String(id) + " course " + String(courseId));
+                    $.ajax({ 
+                        type: "POST",
+                        url: ajaxUrlBase + "/update/off",
+                        context: this,
+                        data: data,
+                        success: function(html){
+                            $(this).removeClass('on');
+                            $(this).addClass('off');
+                            $(this).delay(20).queue(function(next) {
+                                $(this).animate({opacity: 0.3}, 100);
+                                next();
+                            });
+                            console.log("off mentor " + String(id) + " course " + String(courseId) + " have done.");
+                        }
+                    });
+                }else{
+                    console.log("on mentor " + String(id) + " course " + String(courseId));
+                     $.ajax({
+                        type: "POST",
+                        context: this,
+                        url: ajaxUrlBase + "/update/on",
+                        data: data,
+                        success: function(html){
+                            $(this).removeClass('off');
+                            $(this).addClass('on');
+                            $(this).delay(20).queue(function(next) {
+                                $(this).animate({opacity: 1}, 100);
+                                next();
+                            });
+                            console.log("on mentor " + String(id) + " course " + String(courseId) + " have done.");
+                        }
+                    });
+                }
+            });
+            $(".ajax-course-choose").each(function(i,item){
+                if ($(item).hasClass('on')){
+                    $(item).delay(i*50).queue(function(next) {
+                        $(this).animate({opacity: 1}, 100);
+                        next();
+                    });
+                }else{
+                    $(item).delay(i*50).queue(function(next) {
+                        $(this).animate({opacity: 0.3}, 100);
+                        next();
+                    });
+                }
+            });
+            console.log("loading mentor course edit have done.");
+          }
+        });
+        $("#course-choose-modal").addClass("active");
+    }));
+    ($("#course-choose-modal+.container .close-above-modal-button").on('click',function(){
+        console.log("Close above modal button activate");
+        $(".filter.above-modal.active").removeClass("active");
+        $(".above-loader").show();
+        $(".loader").show();
+        
+        var divClass = $(".close-above-modal-button").attr('value');
+        
+        if(divClass=="choose-mentor-course-button"){
+            console.log("Jump to #camp-data.mentor-modal-button");
+            $(this).parent().prev(".mentor-modal-button").removeAttr("id");
+            $(this).parent().prev(".mentor-modal-button").attr("id","camp-data");
+            $("#camp-data.mentor-modal-button").trigger("click");
+        }else if(divClass==="choose-camp-course-button"){
+            console.log("Jump to #camp-data.camp-modal-button");
+            $("this+.mentor-modal-button").attr('id',"camp-data");
+            $("#camp-data.camp-modal-button").trigger("click");
+        }
+    }));
+    
+    ($("#camp-data.mentor-modal-button,#camp-data.course-modal-button").on('click',function(){
+        console.log("#camp-data.camp-modal-button activate.");
+        var divId = $(this).attr('id');
+        console.log(divId + "activate");
+        var div = $(this);
+        var category = "";
+        
+        if(divId=="mentor-data"){
+            category = "mentor";
+        }else if(divId=="camp-data"){
+            category = "camp";
+        }
+        var id = div.children("#mentor-id").attr('value');
+        
+        $(".choose-mentor-course-button").attr('value',id);
+        var imgUrl = div.children("#mentor-img").attr('src');
+        var name = div.children("#mentor-name").text();
+        
+        $("#modal-mentor-name").text(name);
+        $("#modal-mentor-img").attr('src',imgUrl);
+        
+        $(".ajax-course").remove();
+        console.log("reloading mentor " + String(id) + " courses.");
+        $.ajax({
+          type: "POST",
+          url: "./mentor/courses",
+          data: {"mentorId": id},
+          success: function(html){
+            $("#mentor-course-item").append(html);
+            $("#mentor-course-item.loader").fadeOut(100);
+            $(".ajax-course").each(function(i,item){
+                $(item).delay(100).fadeIn(10);
+            });
+            $(".ajax-course").each(function(i,item){
+                $(item).delay(i*50).queue(function(next) {
+                    $(this).animate({opacity: 1}, 100);
+                    next();
+                });
+            })
+            console.log("reloading mentor " + String(id) + " courses have done.");
+          }
+        });
+        
+        $("#course-choose-modal+.container #mentor-id").text(id);
+        $("#course-choose-modal+.container #mentor-img").attr('src',imgUrl);
+        $("#course-choose-modal+.container #mentor-name").text(name);
+        
+        
+        $("#mentor-modal").addClass("active");
+    }));
+</script>

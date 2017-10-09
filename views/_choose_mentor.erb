@@ -1,0 +1,173 @@
+<div class="filter above-modal" id="mentor-choose-modal">
+</div>
+<div class="container">
+    <div class="content">
+        <div id="camp-data" class="camp-modal-button" hidden>
+			<div id="camp-id" value=""></div>
+			<img id="camp-img" src="">
+			<h3  id="camp-name"></h3>
+		</div>
+		<div class="close-button-box"><button class="close-above-modal-button">×</button></div>
+		<div class="items-box">
+            <div id="choose-mentor"><h2 class="choose-name">Mentor</h2></div>
+            <%= erb :_above_loader ,locals: {loader_id: "mentor-choose-item"} %>
+        </div>
+	</div>
+</div>
+<script>
+    ($(".choose-camp-mentor-button").on('click',function(){
+        console.log(".choose-camp-mentor-button activate.");
+        var campDiv = $(this);
+        var campId = campDiv.attr('value');
+        console.log(campId);
+        
+        $(".ajax-mentor-choose").remove();
+        console.log("loading camp mentor edit.");
+        $.ajax({
+          type: "POST",
+          url: "./camp/mentors/edit",
+          data: {"campId": campId},
+          success: function(html){
+            $("#choose-mentor").append(html);
+            $(".above-loader#mentor-choose-item").fadeOut(100);
+            $(".ajax-mentor-choose").each(function(i,item){
+                $(item).delay(100).fadeIn(10);
+            });
+            
+            $(".ajax-mentor-choose").on({
+                "mouseenter": function(){
+                    var mentorName = $(this).attr('data');
+                    $("#choose-mentor h2").text(mentorName);
+                    console.log("hello");
+                },
+                "mouseleave": function(){
+                    $("#choose-mentor h2").text("Mentor");
+                }
+            });
+            
+            $(".ajax-mentor-choose").on('click',function(){
+                var mentorId = $(this).attr('value');
+                if($(this).hasClass('on')){
+                    console.log("on camp " + String(campId) + " mentors " + String(mentorId));
+                    $.ajax({
+                        type: "POST",
+                        url: "./camp/mentors/update/off",
+                        context: this,
+                        data: {"campId": campId,"mentorId": mentorId},
+                        success: function(html){
+                            $(this).removeClass('on');
+                            $(this).addClass('off');
+                            $(this).delay(20).queue(function(next) {
+                                $(this).animate({opacity: 0.3}, 100);
+                                next();
+                            });
+                        }
+                    });
+                }else{
+                    console.log("on camp " + String(campId) + " mentors " + String(mentorId));
+                     $.ajax({
+                        type: "POST",
+                        context: this,
+                        url: "./camp/mentors/update/on",
+                        data: {"campId": campId,"mentorId": mentorId},
+                        success: function(html){
+                            $(this).removeClass('off');
+                            $(this).addClass('on');
+                            $(this).delay(20).queue(function(next) {
+                                $(this).animate({opacity: 1}, 100);
+                                next();
+                            });
+                        }
+                    });
+                }
+            });
+            $(".ajax-mentor-choose").each(function(i,item){
+                if ($(item).hasClass('on')){
+                    $(item).delay(i*50).queue(function(next) {
+                        $(this).animate({opacity: 1}, 100);
+                        next();
+                    });
+                }else{
+                    $(item).delay(i*50).queue(function(next) {
+                        $(this).animate({opacity: 0.3}, 100);
+                        next();
+                    });
+                }
+            });
+            console.log("loading camp mentor edit have done.");
+          }
+        });
+        
+        $("#mentor-choose-modal").addClass("active");
+    }));
+    ($("#mentor-choose-modal+.container .close-above-modal-button").on('click',function(){
+        console.log("Close above modal button activate");
+        $(".filter.above-modal.active").removeClass("active");
+        $(".above-loader").show();
+        $(".loader").show();
+        $("#camp-data.mentor-modal-button").trigger("click");
+        
+    }));
+    
+    ($("#camp-data.camp-modal-button").on('click',function(){
+        console.log("#camp-data.camp-modal-button activate.");
+        var campDiv = $(this);
+        var campId = campDiv.children("#camp-id").attr('value');
+        $(".choose-camp-mentor-button").val(campId);
+        var campImgUrl = campDiv.children("#camp-img").attr('src');
+        var campName = campDiv.children("#camp-name").text();
+        
+        $("#modal-camp-name").text(campName);
+        $("#modal-camp-img").attr('src',campImgUrl);
+        
+        $(".ajax-course").remove();
+        console.log("reloading camp " + String(campId) + " courses.");
+        $.ajax({
+          type: "POST",
+          url: "./camp/courses",
+          data: {"campId": campId},
+          success: function(html){
+            $("#camp-course-item").append(html);
+            $(".loader#camp-course-item").fadeOut(100);
+            $("#camp-course-item .ajax-course").each(function(i,item){
+                $(item).delay(100).fadeIn(10);
+            });
+            $("#camp-course-item .ajax-course").each(function(i,item){
+                $(item).delay(i*50).queue(function(next) {
+                    $(this).animate({opacity: 1}, 100);
+                    next();
+                });
+            });
+            console.log("reloading camp " + String(campId) + " courses have done.");
+          }
+        });
+        
+        $(".ajax-mentor").remove();
+        console.log("reloading camp " + String(campId) + " mentors.");
+        $.ajax({
+          type: "POST",
+          url: "./camp/mentors",
+          data: {"campId": campId},
+          success: function(html){
+            $("#camp-mentor-item").append(html);
+            $(".loader#camp-mentor-item").fadeOut(100);
+            $("#camp-mentor-item .ajax-mentor").each(function(i,item){
+                $(item).delay(100).fadeIn(10);
+            });
+            $("#camp-mentor-item .ajax-mentor").each(function(i,item){
+                $(item).delay(i*50).queue(function(next) {
+                    $(this).animate({opacity: 1}, 100);
+                    next();
+                });
+            });
+            console.log("reloading camp " + String(campId) + " mentors have done.");
+          }
+        });
+        
+        $("#mentor-choose-modal+.container #camp-id").text(campId);
+        $("#mentor-choose-modal+.container #camp-img").attr('src',campImgUrl);
+        $("#mentor-choose-modal+.container #camp-name").text(campName);
+        
+        $("#camp-modal").addClass("active");
+    }));
+</script>

@@ -1,8 +1,19 @@
 Camp.destroy_all
 Course.destroy_all
 Mentor.destroy_all
+Campus.destroy_all
 
-Course.create([
+courseTypes = CourseType.create([
+    {name: "school"},
+    {name: "app"},
+    {name: "web"},
+    {name: "game"},
+    {name: "coding"},
+    {name: "creative"},
+    {name: "design"},
+])
+
+courses = Course.create([
     {name: "iPhoneアプリプログラミングコース", img_url: "./assets/images/course/iPhone.png"},
     {name: "Androidアプリプログラミングコース", img_url: "./assets/images/course/Android.png"},
     {name: "Unity®ゲームプログラミングコース（2D・3D）", img_url: "./assets/images/course/Unity.png"},
@@ -22,7 +33,9 @@ Course.create([
     {name: "カメラ＆フォトグラフィコース", img_url: "./assets/images/course/Camera.png"},
     ])
     
-Mentor.create([
+courses[0].course_types << courseTypes[0]
+    
+mentors = Mentor.create([
     {name: "バッハ", img_url: "./assets/images/mentors/bach.jpg"},
     {name: "ちゃーはん", img_url: "./assets/images/mentors/cha-han.jpg"},
     {name: "デイジー", img_url: "./assets/images/mentors/daisy.jpg"},
@@ -49,4 +62,50 @@ Mentor.create([
     {name: "サブウェイ", img_url: "./assets/images/mentors/subway.jpg"},
     {name: "とし", img_url: "./assets/images/mentors/toshi.jpg"},
     {name: "ツーブロ", img_url: "./assets/images/mentors/twoblo.jpg"},
-    ])
+])
+    
+campus = Campus.create([
+    {
+        official_name:"東京大学 本郷キャンパス",
+        common_name: "東大本郷",
+        university_name: "東京大学",
+        campus_name: "本郷キャンパス",
+        postal_code: "113-0033",
+        address: "東京都文京区本郷7-3-1",
+        lat: 35.711517, 
+        lng: 139.760136,
+        img_url: "./assets/images/campus/toudai_hongo.jpg"
+    },
+    {
+        official_name:"東京大学 浅野キャンパス",
+        common_name: "東大浅野",
+        university_name: "東京大学",
+        campus_name: "浅野キャンパス",
+        postal_code: "113-0032",
+        lat: 35.716061, 
+        lng: 139.763384,
+        address: "東京都文京区弥生2丁目2-11-16",
+        img_url: "./assets/images/campus/toudai_asano.jpg"
+    },
+])
+
+camps = Camp.create([
+    {
+        name:"7東大",
+        img_url:"/assets/images/camp/summer2017.png"
+    },
+])
+
+Camp.first.courses << courses[0]
+Camp.first.courses << courses[1]
+Camp.first.courses << courses[2]
+
+Camp.first.mentors << mentors[0]
+Camp.first.mentors << mentors[1]
+
+mentors[0].courses << courses[0]
+mentors[0].courses << courses[1]
+mentors[1].courses << courses[1]
+mentors[2].courses << courses[2]
+
+campus[0].camps << camps[0]

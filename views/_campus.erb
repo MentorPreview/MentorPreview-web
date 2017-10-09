@@ -1,0 +1,64 @@
+<div class="filter modal" id="campus-modal">
+</div>
+<div class="container">
+    <div class="content">
+        <button class="close-modal-button">×</button>
+        <h2 id="modal-campus-id" hidden></h2>
+        <h2 id="modal-campus-name">キャンパス名</h2>
+        <!--<h3 id="modal-campus-name-english">英語表記</h3>-->
+        <div>
+            <img id="modal-campus-img" class="modal-img" src="./assets/images/camp/summer2017.png">
+        </div>
+        <button id="campus-location-modal-button" class="open-modal-button">edit location <i class="fa fa fa-map-marker" aria-hidden="true"></i></button>
+        <div class="items-box">
+            <div id="campus-camp-item"><h2>Camp<span class="choose-campus-camp-button" value=""> <i class="edit-button fa fa-th-list" aria-hidden="true"></i></span></h2></div>
+            <%= erb :_loader ,locals: {loader_id: "campus-camp-item"} %>
+    	</div>
+	</div>
+</div>
+<script>
+    // 押されるものはdata.erbにある
+    ($(".img-box.campus-modal-button").on('click',function(){
+        console.log(".img-box.campus-modal-button activate.");
+        campusDiv = $(this)
+        campusId = campusDiv.children("#campus-id").attr('value');
+        console.log(campusId);
+        $(".choose-campus-camp-button").attr('value',campusId);
+        campusImgUrl = campusDiv.children("#campus-img").attr('src');
+        campusName = campusDiv.children("#campus-name").text();
+        
+        $(".ajax-camp").remove();
+        $.ajax({
+          type: "POST",
+          url: "./campus/camps",
+          data: {"campusId": campusId},
+          success: function(html){
+            $("#campus-camp-item").append(html);
+            $(".loader#campus-camp-item").fadeOut(100);
+            $("#campus-camp-item .ajax-camp").each(function(i,item){
+                $(item).delay(100).fadeIn(10);
+            });
+            $("#campus-camp-item .ajax-camp").each(function(i,item){
+                $(item).delay(i*50).queue(function(next) {
+                    $(this).animate({opacity: 1}, 100);
+                    next();
+                });
+            })
+          }
+        });
+        
+        $("#modal-campus-id").text(campusId);
+        $("#modal-campus-name").text(campusName);
+        $("#modal-campus-img").attr('src',campusImgUrl);
+        
+        $("#camp-choose-modal+.container #campus-id").attr('value',campusId);
+        $("#camp-choose-modal+.container #campus-img").attr('src',campusImgUrl);
+        $("#camp-choose-modal+.container #campus-name").text(campusName);
+        
+        $("#campus-modal").addClass("active");
+    }));
+    ($(".close-modal-button").on('click',function(){
+        $(".filter.active").removeClass("active");
+        $(".loader").show();
+    }));
+</script>

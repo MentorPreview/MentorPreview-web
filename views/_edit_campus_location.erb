@@ -1,0 +1,26 @@
+<div class="filter above-modal" id="edit-campus-location-modal">
+</div>
+<div class="container">
+    <div class="content">
+        <!--<h2 class="form-header">メンターを追加する</h2>-->
+        <div class="close-button-box"><button class="close-above-modal-button">×</button></div>
+        <form action="/campus/edit/location" method="post">
+            <div style="width:100%;margin:auto;">
+                <input type="hidden" name="campusId">
+        		<input type="text" name="lat" placeholder="lat" style="width:12%;height:20px;font-size:18px;">
+        		<input type="text" name="lng" placeholder="lng" style="width:12%;height:20px;font-size:18px;">
+    		<input type="submit" value="設定" style="width:20%;height:32px;font-size:14px;padding:6px 0;">
+    		</div>
+    	</form>
+	</div>
+</div>
+<script>
+    ($("#campus-location-modal-button").on('click',function(){
+        console.log($(this).prevAll("#modal-campus-id").val());
+        $('#edit-campus-location-modal+.container input[name="campusId"]').attr('value',$(this).prevAll("#modal-campus-id").val());
+        $("#edit-campus-location-modal").addClass("active");
+    }));
+    ($("#edit-campus-location-modal").on('click',function(){
+        $(".filter.active").removeClass("active");
+    }));
+</script>

@@ -1,0 +1,189 @@
+<div class="filter above-modal" id="camp-choose-modal">
+</div>
+<div class="container">
+    <div class="content">
+        <div id="campus-data" class="campus-modal-button" hidden>
+			<div id="campus-id" value=""></div>
+			<img id="campus-img" src="">
+			<h3  id="campus-name"></h3>
+		</div>
+        <div class="close-button-box"><button class="close-above-modal-button">×</button></div>
+        <div class="items-box">
+            <div id="choose-camp"><h2 class="choose-name">Camp</h2></div>
+            <%= erb :_above_loader ,locals: {loader_id: "camp-choose-item"} %>
+        </div>
+	</div>
+</div>
+<script>
+    ($(".choose-campus-camp-button").on('click',function(){
+        var div = $(this);
+        var id = div.attr('value');
+        var divClass = $(this).attr('class');
+        console.log("." + divClass + " activate.");
+        
+        $(".close-above-modal-button").attr('value',divClass);
+        
+        $(".ajax-camp-choose").remove();
+        console.log("loading campus camp edit.");
+        
+        var ajaxUrlBase = "";
+        var dataId_1 = "";
+        var data = {};
+        if(divClass == "choose-campus-camp-button"){
+            ajaxUrlBase = "./campus/camps";
+            dataId_1 = "campusId";
+        }else if(divClass == "choose-camp-course-button"){
+            ajaxUrlBase = "./camp/courses";
+            dataId_1 = "campId";
+        }
+        data[dataId_1] = id;
+        console.log("data is {" + dataId_1 + ": " + id + " }");
+        $.ajax({
+          type: "POST",
+          url: ajaxUrlBase + "/edit",
+          data: data,
+          success: function(html){
+            $("#choose-camp").append(html);
+            $(".above-loader#camp-choose-item").fadeOut(100);
+            
+            $(".ajax-camp-choose").each(function(i,item){
+                $(item).delay(100).fadeIn(10);
+            });
+            
+            $(".ajax-camp-choose").hover(function(){
+                console.log("hello");
+            });
+            
+            
+            $(".ajax-camp-choose").on({
+                "mouseenter": function(){
+                    var campName = $(this).attr('data');
+                    $("#choose-camp h2").text(campName);
+                },
+                "mouseleave": function(){
+                    $("#choose-camp h2").text("Camp");
+                }
+            });
+            
+            $(".ajax-camp-choose").on('click',function(){
+                var campId = $(this).attr('value');
+                data["campId"] = campId;
+                console.log("data is {" + dataId_1 + ": " + data[dataId_1] + ", campId: " + campId + " }");
+                if($(this).hasClass('on')){
+                    console.log("off mentor " + String(id) + " camp " + String(campId));
+                    $.ajax({ 
+                        type: "POST",
+                        url: ajaxUrlBase + "/update/off",
+                        context: this,
+                        data: data,
+                        success: function(html){
+                            $(this).removeClass('on');
+                            $(this).addClass('off');
+                            $(this).delay(20).queue(function(next) {
+                                $(this).animate({opacity: 0.3}, 100);
+                                next();
+                            });
+                            console.log("off campus " + String(id) + " camp " + String(campId) + " have done.");
+                        }
+                    });
+                }else{
+                    console.log("on campus " + String(id) + " camp " + String(campId));
+                     $.ajax({
+                        type: "POST",
+                        context: this,
+                        url: ajaxUrlBase + "/update/on",
+                        data: data,
+                        success: function(html){
+                            $(this).removeClass('off');
+                            $(this).addClass('on');
+                            $(this).delay(20).queue(function(next) {
+                                $(this).animate({opacity: 1}, 100);
+                                next();
+                            });
+                            console.log("on campus " + String(id) + " camp " + String(campId) + " have done.");
+                        }
+                    });
+                }
+            });
+            $(".ajax-camp-choose").each(function(i,item){
+                if ($(item).hasClass('on')){
+                    $(item).delay(i*50).queue(function(next) {
+                        $(this).animate({opacity: 1}, 100);
+                        next();
+                    });
+                }else{
+                    $(item).delay(i*50).queue(function(next) {
+                        $(this).animate({opacity: 0.3}, 100);
+                        next();
+                    });
+                }
+            });
+            console.log("loading campus camp edit have done.");
+          }
+        });
+        $("#camp-choose-modal").addClass("active");
+    }));
+    ($("#camp-choose-modal+.container .close-above-modal-button").on('click',function(){
+        console.log("Close above modal button activate");
+        $(".filter.above-modal.active").removeClass("active");
+        $(".above-loader").show();
+        $(".loader").show();
+        
+        var divClass = $(".close-above-modal-button").attr('value');
+        
+        if(divClass=="choose-campus-camp-button"){
+            console.log("Jump to #camp-data.campus-modal-button");
+            $("#campus-data.campus-modal-button").trigger("click");
+        }
+    }));
+    
+    ($("#campus-data.campus-modal-button").on('click',function(){
+        console.log("#campus-data.campus-modal-button activate.");
+        var divId = $(this).attr('id');
+        console.log(divId + "activate");
+        var div = $(this);
+        var category = "";
+        if(divId=="campus-data"){
+            category = "campus";
+        }else if(divId=="camp-data.campus-modal-button"){
+            category = "course";
+        }
+        var id = div.children("#campus-id").attr('value');
+        
+        $(".choose-campus-camp-button").attr('value',id);
+        var imgUrl = div.children("#campus-img").attr('src');
+        var name = div.children("#campus-name").text();
+        
+        $("#modal-campus-name").text(name);
+        $("#modal-campus-img").attr('src',imgUrl);
+        
+        $(".ajax-camp").remove();
+        console.log("reloading campus " + String(id) + " camps.");
+        $.ajax({
+          type: "POST",
+          url: "./campus/camps",
+          data: {"campusId": id},
+          success: function(html){
+            $("#campus-camp-item").append(html);
+            $("#campus-camp-item.loader").fadeOut(100);
+            $(".ajax-camp").each(function(i,item){
+                $(item).delay(100).fadeIn(10);
+            });
+            $(".ajax-camp").each(function(i,item){
+                $(item).delay(i*50).queue(function(next) {
+                    $(this).animate({opacity: 1}, 100);
+                    next();
+                });
+            })
+            console.log("reloading camp " + String(id) + " courses have done.");
+          }
+        });
+        
+        $("#camp-choose-modal+.container #campus-id").text(id);
+        $("#camp-choose-modal+.container #campus-img").attr('src',imgUrl);
+        $("#camp-choose-modal+.container #campus-name").text(name);
+        
+        
+        $("#campus-modal").addClass("active");
+    }));
+</script>

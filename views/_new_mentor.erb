@@ -1,9 +1,9 @@
-<div class="filter" id="add-mentor-modal">
+<div class="filter add-modal" id="add-mentor-modal">
 </div>
 <div class="container">
     <div class="content">
         <button class="close-modal-button">×</button>
-        <h2 class="form-header">メンターを追加する</h2>
+        <!--<h2 class="form-header">メンターを追加する</h2>-->
         <form action="/mentors/create" method="post">
     		<input type="text" name="name" placeholder="mentor name">
     		<input type="submit" value="追加">
@@ -13,8 +13,8 @@
 <script>
     ($("#mentor-modal-button").on('click',function(){
         $("#add-mentor-modal").addClass("active");
-    }))
+    }));
     ($(".close-modal-button").on('click',function(){
         $(".filter.active").removeClass("active");
-    }))
+    }));
 </script>

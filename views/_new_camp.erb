@@ -1,0 +1,21 @@
+<div class="filter add-modal" id="add-camp-modal">
+</div>
+<div class="container">
+    <div class="content">
+        <button class="close-modal-button">×</button>
+        <!--<h2 class="form-header">キャンプを追加する</h2>-->
+        <form action="/camps/create" method="post">
+    		<input type="text" name="name" placeholder="camp name">
+    		<input type="submit" value="追加">
+    	</form>
+	</div>
+</div>
+<script>
+    ($("#camp-modal-button").on('click',function(){
+        $("#add-camp-modal").addClass("active");
+    }));
+    ($(".close-modal-button").on('click',function(){
+        $(".filter.active").removeClass("active");
+    }));
+    
+</script>

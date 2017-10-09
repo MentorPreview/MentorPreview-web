@@ -1,0 +1,64 @@
+<div class="filter modal" id="mentor-modal">
+</div>
+<div class="container">
+    <div class="content">
+        <button class="close-modal-button">×</button>
+        <h2 id="modal-mentor-name">メンター名</h2>
+        <!--<h3 id="modal-mentor-name-english">英語表記</h3>-->
+        <div>
+            <img id="modal-mentor-img" class="modal-img" src="./assets/images/mentors/funamin.jpg">
+        </div>
+        <div class="items-box">
+            <div id="mentor-course-item"><h2>Course<span class="choose-mentor-course-button" value=""> <i class="edit-button fa fa-th-list" aria-hidden="true"></i></span></h2></div>
+            <%= erb :_loader ,locals: {loader_id: "mentor-course-item"} %>
+        </div>
+	</div>
+</div>
+<script>
+    // 押されるものはdata.erbにある
+    ($(".img-box.mentor-modal-button").on('click',function(){
+        console.log(".img-box.mentor-modal-button activte");
+        mentorDiv = $(this);
+        mentorId = mentorDiv.children("#mentor-id").attr('value');
+        $(".choose-mentor-course-button").attr('value',mentorId);
+        mentorImgUrl = mentorDiv.children("#mentor-img").attr('src');
+        mentorName = mentorDiv.children("#mentor-name").text();
+        
+        $(".ajax-course").remove();
+        console.log("loading mentor " + String(mentorId) + " courses.");
+        $.ajax({
+          type: "POST",
+          url: "./mentor/courses",
+          data: {"mentorId": mentorId},
+          success: function(html){
+            $("#mentor-course-item").append(html);
+            $("#mentor-course-item.loader").fadeOut(100);
+            $(".ajax-course").each(function(i,item){
+                $(item).delay(100).fadeIn(10);
+            });
+            $(".ajax-course").each(function(i,item){
+                $(item).delay(i*50).queue(function(next) {
+                    $(this).animate({opacity: 1}, 100);
+                    next();
+                });
+            })
+            console.log("loading mentor " + String(mentorId) + " courses have done.");
+          }
+        });
+        
+        $("#modal-mentor-name").text(mentorName);
+        $("#modal-mentor-img").attr('src',mentorImgUrl);
+        
+        $("#course-choose-modal+.container #mentor-id").attr('value',mentorId);
+        $("#course-choose-modal+.container #mentor-img").attr('src',mentorImgUrl);
+        $("#course-choose-modal+.container #mentor-name").text(mentorName);
+        
+        // モーダルを表示する
+        $("#mentor-modal").addClass("active");
+    }));
+    ($(".close-modal-button").on('click',function(){
+        console.log("close button activate.");
+        $(".filter.active").removeClass("active");
+        $(".loader").show();
+    }));
+</script>
