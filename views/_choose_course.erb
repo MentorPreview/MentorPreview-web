@@ -2,10 +2,10 @@
 </div>
 <div class="container">
     <div class="content">
-        <div id="mentor-data camp-data" class="mentor-modal-button" hidden>
-			<div id="mentor-id camp-id" value=""></div>
-			<img id="mentor-img camp-img" src="">
-			<h3  id="mentor-name camp-name"></h3>
+        <div id="mentor-data" class="mentor-modal-button" hidden>
+			<div id="mentor-id" value=""></div>
+			<img id="mentor-img" src="">
+			<h3  id="mentor-name"></h3>
 		</div>
         <div class="close-button-box"><button class="close-above-modal-button">×</button></div>
         <div class="items-box">
@@ -49,16 +49,6 @@
             $(".ajax-course-choose").each(function(i,item){
                 $(item).delay(100).fadeIn(10);
             });
-            
-            // $(".ajax-course-choose").on({
-            //     "mouseenter": function(){
-            //         var courseName = $(this).attr('data');
-            //         $("#choose-course h2").text(courseName);
-            //     },
-            //     "mouseleave": function(){
-            //         $("#choose-course h2").text("Course");
-            //     }
-            // });
             
             $(".ajax-course-choose").on('click',function(){
                 var courseId = $(this).attr('value');
@@ -127,18 +117,18 @@
         var divClass = $(".close-above-modal-button").attr('value');
         
         if(divClass=="choose-mentor-course-button"){
-            console.log("Jump to #camp-data.mentor-modal-button");
+            console.log("Jump to #mentor-data.mentor-modal-button");
             $(this).parent().prev(".mentor-modal-button").removeAttr("id");
-            $(this).parent().prev(".mentor-modal-button").attr("id","camp-data");
-            $("#camp-data.mentor-modal-button").trigger("click");
-        }else if(divClass==="choose-camp-course-button"){
+            $(this).parent().prev(".mentor-modal-button").attr('id',"mentor-data");
+            $("#mentor-data.mentor-modal-button").trigger("click");
+        }else if(divClass=="choose-camp-course-button"){
             console.log("Jump to #camp-data.camp-modal-button");
             $("this+.mentor-modal-button").attr('id',"camp-data");
             $("#camp-data.camp-modal-button").trigger("click");
         }
     }));
     
-    ($("#camp-data.mentor-modal-button,#camp-data.course-modal-button").on('click',function(){
+    ($("#mentor-data.mentor-modal-button,#camp-data.course-modal-button").on('click',function(){
         console.log("#camp-data.camp-modal-button activate.");
         var divId = $(this).attr('id');
         console.log(divId + "activate");
