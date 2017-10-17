@@ -127,8 +127,7 @@ end
 
 post '/campus/edit/location' do
   campus = Campus.find(params[:campusId])
-  camp = Camp.find(params[:campId])
-  campus.camps.delete(camp)
+  campus.update(lat: params[:lat],lng: params[:lng])
   "success"
 end
 
