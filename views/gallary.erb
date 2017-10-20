@@ -1,0 +1,23 @@
+<div class="container">
+	<!--アルバムの一覧表示-->
+	<div class="content">
+	    <h2 class="header"><i class="fa fa-picture-o" aria-hidden="true"></i> Album
+			<button id="album-modal-button" class="open-modal-button">add album <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+		</h2>
+		<% @albums.each do |album| %>
+		    <div class="album-img">
+		        <div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 52.5%;">
+		            <iframe src="//cdn.iframe.ly/api/iframe?url=<%= album.url %>&amp;key=b0b5b0b73e2e592121915a51575ffd88" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen></iframe>
+	            </div>
+            </div>
+		<% end %>
+	</div>
+</div>
+
+<script>
+    $("iframe").on('load',function(){
+
+    });
+</script>
+
+<%= erb :_new_album %>

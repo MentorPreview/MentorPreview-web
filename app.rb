@@ -28,10 +28,7 @@ get '/data' do
 end
 
 get '/gallary' do
-  @camps = Camp.all.order('id asc')
-  @courses = Course.all.order('id asc')
-  @mentors = Mentor.all.order('id asc')
-  @campus = Campus.all.order('id asc')
+  @albums = Album.all.order('id asc');
 	erb :gallary
 end
 
@@ -224,4 +221,11 @@ post '/mentor/courses/update/off' do
   course = Course.find(params[:courseId])
   mentor.courses.delete(course)
   "success"
+end
+
+post '/albums/create' do
+  Album.create(
+    url: params[:name],
+  )
+  redirect '/gallary'
 end

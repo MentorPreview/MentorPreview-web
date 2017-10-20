@@ -55,3 +55,7 @@ class MentorCourse < ActiveRecord::Base
     belongs_to :mentor
     belongs_to :course
 end
+
+class Album < ActiveRecord::Base
+    
+end

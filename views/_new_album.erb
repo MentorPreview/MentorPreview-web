@@ -1,0 +1,21 @@
+<div class="filter add-modal" id="add-album-modal">
+</div>
+<div class="container">
+    <div class="content">
+        <button class="close-modal-button">×</button>
+        <!--<h2 class="form-header">アルバムを追加する</h2>-->
+        <form action="/albums/create" method="post">
+    		<input type="text" name="name" placeholder="album url">
+    		<input type="submit" value="追加">
+    	</form>
+	</div>
+</div>
+<script>
+    ($("#album-modal-button").on('click',function(){
+        $("#add-album-modal").addClass("active");
+    }));
+    ($(".close-modal-button").on('click',function(){
+        $(".filter.active").removeClass("active");
+    }));
+    
+</script>

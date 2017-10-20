@@ -441,3 +441,17 @@ svg rect{
 .edit-button:hover{
 	color: #83efe3;
 }
+
+.album-img{
+	width:386px;
+	height:200px;
+	overflow:hidden;
+	float:left;
+	margin-bottom: 4px;
+	border-radius:4px;
+	background:#eee;
+}
+
+.album-img:nth-child(odd){
+	margin-left:4px;
+}

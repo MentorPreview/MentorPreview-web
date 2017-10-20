@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171004081238) do
+ActiveRecord::Schema.define(version: 20171020083706) do
+
+  create_table "albums", force: :cascade do |t|
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "camp_courses", force: :cascade do |t|
     t.integer "camp_id"
