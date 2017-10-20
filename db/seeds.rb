@@ -2,6 +2,7 @@ Camp.destroy_all
 Course.destroy_all
 Mentor.destroy_all
 Campus.destroy_all
+Album.destroy_all
 
 courseTypes = CourseType.create([
     {name: "school"},
@@ -109,3 +110,9 @@ mentors[1].courses << courses[1]
 mentors[2].courses << courses[2]
 
 campus[0].camps << camps[0]
+
+Album.create([
+    {url: 'https://photos.app.goo.gl/XIoOCJo4JQvMVw6w2'},
+    {url: 'https://photos.app.goo.gl/o9CQli8mWdmnJUup1'}, 
+    {url: 'https://photos.app.goo.gl/DMKbx6rWcnpJLVl82'}, 
+])
