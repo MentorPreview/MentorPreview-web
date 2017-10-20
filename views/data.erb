@@ -2,14 +2,14 @@
 	<!--コースの一覧表示-->
 	<div class="content">
 		<h2 class="header"><i class="fa fa-superpowers" aria-hidden="true"></i> Course
-			<button id="all" class="course-order-button">all</button>
-			<button id="school" class="course-order-button">school</button>
-			<button id="app" class="course-order-button">app</button>
-			<button id="web" class="course-order-button">web</button>
-			<button id="game" class="course-order-button">game</button>
-			<button id="coding" class="course-order-button">coding</button>
-			<button id="creative" class="course-order-button">creative</button>
-			<button id="design" class="course-order-button">design</button>
+			<!--<button id="all" class="course-order-button">all</button>-->
+			<!--<button id="school" class="course-order-button">school</button>-->
+			<!--<button id="app" class="course-order-button">app</button>-->
+			<!--<button id="web" class="course-order-button">web</button>-->
+			<!--<button id="game" class="course-order-button">game</button>-->
+			<!--<button id="coding" class="course-order-button">coding</button>-->
+			<!--<button id="creative" class="course-order-button">creative</button>-->
+			<!--<button id="design" class="course-order-button">design</button>-->
 		</h2>
 		<% @courses.each do |course| %>
 		<div class="img-box course-modal-button <% course.course_types.each do |type| %><%= type.name %><% end %>">
@@ -23,8 +23,8 @@
 	<!--メンターの一覧表示-->
 	<div class="content">
 		<h2 class="header"><i class="fa fa-address-book-o" aria-hidden="true"></i> Mentor
-			<button id="mentor-modal-button" class="open-modal-button">add mentor <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-			<button id="mentor-modal-button" class="open-modal-button">search mentor <i class="fa fa-search" aria-hidden="true"></i></button>
+			<!--<button id="mentor-modal-button" class="open-modal-button">add mentor <i class="fa fa-plus-circle" aria-hidden="true"></i></button>-->
+			<!--<button id="mentor-modal-button" class="open-modal-button">search mentor <i class="fa fa-search" aria-hidden="true"></i></button>-->
 		</h2>
 		<% @mentors.each do |mentor| %>
 		<div class="img-box mentor-modal-button">
@@ -39,7 +39,7 @@
 	<div class="content" id="camp">
 		<h2 class="header"><i class="fa fa-users" aria-hidden="true"></i> Camp
 			<button id="camp-modal-button" class="open-modal-button">add camp <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-			<button id="camp-modal-button" class="open-modal-button">search camp <i class="fa fa-search" aria-hidden="true"></i></button>
+			<!--<button id="camp-modal-button" class="open-modal-button">search camp <i class="fa fa-search" aria-hidden="true"></i></button>-->
 		</h2>
 		<% @camps.each do |camp| %>
 		<div class="img-box camp-modal-button">
@@ -53,8 +53,8 @@
 	<!--キャンパスの一覧表示-->
 	<div class="content">
 		<h2 class="header"><i class="fa fa-university" aria-hidden="true"></i> Campus
-			<button id="mentor-modal-button" class="open-modal-button">add campus <i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-			<button id="mentor-modal-button" class="open-modal-button">search mentor <i class="fa fa-search" aria-hidden="true"></i></button>
+			<!--<button id="mentor-modal-button" class="open-modal-button">add campus <i class="fa fa-plus-circle" aria-hidden="true"></i></button>-->
+			<!--<button id="mentor-modal-button" class="open-modal-button">search campus <i class="fa fa-search" aria-hidden="true"></i></button>-->
 		</h2>
 		<% @campus.each do |campus| %>
 		<div class="img-box campus-modal-button">
