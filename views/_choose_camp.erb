@@ -1,4 +1,4 @@
-<div class="filter above-modal" id="camp-choose-modal">
+<div class="filter above-modal" id="choose-camp-modal-filter">
 </div>
 <div class="container">
     <div class="content">
@@ -121,9 +121,9 @@
             console.log("loading campus camp edit have done.");
           }
         });
-        $("#camp-choose-modal").addClass("active");
+        $("#choose-camp-modal-filter").addClass("active");
     }));
-    ($("#camp-choose-modal+.container .close-above-modal-button").on('click',function(){
+    ($("#choose-camp-modal-filter+.container .close-above-modal-button").on('click',function(){
         console.log("Close above modal button activate");
         $(".filter.above-modal.active").removeClass("active");
         $(".above-loader").show();
@@ -179,11 +179,11 @@
           }
         });
         
-        $("#camp-choose-modal+.container #campus-id").text(id);
-        $("#camp-choose-modal+.container #campus-img").attr('src',imgUrl);
-        $("#camp-choose-modal+.container #campus-name").text(name);
+        $("#choose-camp-modal-filter+.container #campus-id").text(id);
+        $("#choose-camp-modal-filter+.container #campus-img").attr('src',imgUrl);
+        $("#choose-camp-modal-filter+.container #campus-name").text(name);
         
         
-        $("#campus-modal").addClass("active");
+        $("#campus-modal-filter").addClass("active");
     }));
 </script>

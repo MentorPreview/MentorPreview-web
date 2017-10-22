@@ -1,4 +1,4 @@
-<div class="filter above-modal" id="course-choose-modal">
+<div class="filter above-modal" id="choose-course-modal-filter">
 </div>
 <div class="container">
     <div class="content">
@@ -106,9 +106,9 @@
             console.log("loading mentor course edit have done.");
           }
         });
-        $("#course-choose-modal").addClass("active");
+        $("#choose-course-modal-filter").addClass("active");
     }));
-    ($("#course-choose-modal+.container .close-above-modal-button").on('click',function(){
+    ($("#choose-course-modal-filter+.container .close-above-modal-button").on('click',function(){
         console.log("Close above modal button activate");
         $(".filter.above-modal.active").removeClass("active");
         $(".above-loader").show();
@@ -171,11 +171,11 @@
           }
         });
         
-        $("#course-choose-modal+.container #mentor-id").text(id);
-        $("#course-choose-modal+.container #mentor-img").attr('src',imgUrl);
-        $("#course-choose-modal+.container #mentor-name").text(name);
+        $("#choose-course-modal-filter+.container #mentor-id").text(id);
+        $("#choose-course-modal-filter+.container #mentor-img").attr('src',imgUrl);
+        $("#choose-course-modal-filter+.container #mentor-name").text(name);
         
         
-        $("#mentor-modal").addClass("active");
+        $("#mentor-modal-filter").addClass("active");
     }));
 </script>

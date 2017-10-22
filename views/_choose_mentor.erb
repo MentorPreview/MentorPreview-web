@@ -1,4 +1,4 @@
-<div class="filter above-modal" id="mentor-choose-modal">
+<div class="filter above-modal" id="choose-mentor-modal-filter">
 </div>
 <div class="container">
     <div class="content">
@@ -98,9 +98,9 @@
           }
         });
         
-        $("#mentor-choose-modal").addClass("active");
+        $("#choose-mentor-modal-filter").addClass("active");
     }));
-    ($("#mentor-choose-modal+.container .close-above-modal-button").on('click',function(){
+    ($("#choose-mentor-modal-filter+.container .close-above-modal-button").on('click',function(){
         console.log("Close above modal button activate");
         $(".filter.above-modal.active").removeClass("active");
         $(".above-loader").show();
@@ -164,10 +164,10 @@
           }
         });
         
-        $("#mentor-choose-modal+.container #camp-id").text(campId);
-        $("#mentor-choose-modal+.container #camp-img").attr('src',campImgUrl);
-        $("#mentor-choose-modal+.container #camp-name").text(campName);
+        $("#choose-mentor-modal-filter+.container #camp-id").text(campId);
+        $("#choose-mentor-modal-filter+.container #camp-img").attr('src',campImgUrl);
+        $("#choose-mentor-modal-filter+.container #camp-name").text(campName);
         
-        $("#camp-modal").addClass("active");
+        $("#camp-modal-filter").addClass("active");
     }));
 </script>

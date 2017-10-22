@@ -1,4 +1,4 @@
-<div class="filter add-modal" id="add-album-modal">
+<div class="filter add-modal" id="add-album-modal-filter">
 </div>
 <div class="container">
     <div class="content">
@@ -12,7 +12,7 @@
 </div>
 <script>
     ($("#album-modal-button").on('click',function(){
-        $("#add-album-modal").addClass("active");
+        $("#add-album-modal-filter").addClass("active");
     }));
     ($(".close-modal-button").on('click',function(){
         $(".filter.active").removeClass("active");

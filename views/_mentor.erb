@@ -1,4 +1,4 @@
-<div class="filter modal" id="mentor-modal">
+<div class="filter modal" id="mentor-modal-filter">
 </div>
 <div class="container">
     <div class="content">
@@ -49,12 +49,12 @@
         $("#modal-mentor-name").text(mentorName);
         $("#modal-mentor-img").attr('src',mentorImgUrl);
         
-        $("#course-choose-modal+.container #mentor-id").attr('value',mentorId);
-        $("#course-choose-modal+.container #mentor-img").attr('src',mentorImgUrl);
-        $("#course-choose-modal+.container #mentor-name").text(mentorName);
+        $("#choose-course-modal-filter+.container #mentor-id").attr('value',mentorId);
+        $("#choose-course-modal-filter+.container #mentor-img").attr('src',mentorImgUrl);
+        $("#choose-course-modal-filter+.container #mentor-name").text(mentorName);
         
         // モーダルを表示する
-        $("#mentor-modal").addClass("active");
+        $("#mentor-modal-filter").addClass("active");
     }));
     ($(".close-modal-button").on('click',function(){
         console.log("close button activate.");

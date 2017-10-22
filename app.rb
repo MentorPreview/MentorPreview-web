@@ -4,10 +4,6 @@ require 'sinatra/reloader' if development?
 require './models'
 
 get '/' do
-  @camps = Camp.all.order('id asc')
-  @courses = Course.all.order('id asc')
-  @mentors = Mentor.all.order('id asc')
-  @campus = Campus.all.order('id asc')
 	erb :mypage
 end
 

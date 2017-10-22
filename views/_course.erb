@@ -1,4 +1,4 @@
-<div class="filter modal" id="course-modal">
+<div class="filter modal" id="course-modal-filter">
 </div>
 <div class="container">
     <div class="content">
@@ -44,7 +44,7 @@
     
     $("#modal-course-name").text(courseName);
     $("#modal-course-img").attr('src',courseImgUrl);
-    $("#course-modal").addClass("active");
+    $("#course-modal-filter").addClass("active");
 }));
 ($(".close-modal-button").on('click',function(){
     $(".filter.active").removeClass("active");

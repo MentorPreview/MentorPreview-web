@@ -1,4 +1,4 @@
-<div class="filter modal" id="camp-modal">
+<div class="filter modal" id="camp-modal-filter">
 </div>
 <div class="container">
     <div class="content">
@@ -75,11 +75,11 @@
         $("#modal-camp-name").text(campName);
         $("#modal-camp-img").attr('src',campImgUrl);
         
-        $("#mentor-choose-modal+.container #camp-id").attr('value',campId);
-        $("#mentor-choose-modal+.container #camp-img").attr('src',campImgUrl);
-        $("#mentor-choose-modal+.container #camp-name").text(campName);
+        $("#choose-mentor-modal-filter+.container #camp-id").attr('value',campId);
+        $("#choose-mentor-modal-filter+.container #camp-img").attr('src',campImgUrl);
+        $("#choose-mentor-modal-filter+.container #camp-name").text(campName);
         
-        $("#camp-modal").addClass("active");
+        $("#camp-modal-filter").addClass("active");
     }));
     ($(".close-modal-button").on('click',function(){
         console.log("Close button activate.");

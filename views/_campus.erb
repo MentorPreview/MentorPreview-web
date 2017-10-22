@@ -1,4 +1,4 @@
-<div class="filter modal" id="campus-modal">
+<div class="filter modal" id="campus-modal-filter">
 </div>
 <div class="container">
     <div class="content">
@@ -51,11 +51,11 @@
         $("#modal-campus-name").text(campusName);
         $("#modal-campus-img").attr('src',campusImgUrl);
 
-        $("#camp-choose-modal+.container #campus-id").attr('value',campusId);
-        $("#camp-choose-modal+.container #campus-img").attr('src',campusImgUrl);
-        $("#camp-choose-modal+.container #campus-name").text(campusName);
+        $("#choose-camp-modal-filter+.container #campus-id").attr('value',campusId);
+        $("#choose-camp-modal-filter+.container #campus-img").attr('src',campusImgUrl);
+        $("#choose-camp-modal-filter+.container #campus-name").text(campusName);
         
-        $("#campus-modal").addClass("active");
+        $("#campus-modal-filter").addClass("active");
     }));
     ($(".close-modal-button").on('click',function(){
         $(".filter.active").removeClass("active");

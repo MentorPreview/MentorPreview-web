@@ -1,4 +1,4 @@
-<div class="filter above-modal" id="edit-campus-location-modal">
+<div class="filter above-modal" id="edit-campus-location-modal-filter">
 </div>
 <div class="container">
     <div class="content">
@@ -16,7 +16,7 @@
     ($("#campus-location-modal-button").on('click',function(){
         console.log("#campus-location-modal-button activate.");
        
-        $('#edit-campus-location-modal+.container input[name="campusId"]').attr('value',$('#modal-campus-id').text());
+        $('#edit-campus-location-modal-filter+.container input[name="campusId"]').attr('value',$('#modal-campus-id').text());
         
         $("#edit-campus-location-button").on('click',function(){
             var campusId = $('#modal-campus-id').text();
@@ -29,15 +29,15 @@
               data: {"campusId": campusId,"lat":lat,"lng":lng},
               success: function(html){
                 console.log("campusId: " + campusId + ",lat: " + lat + ",lng: "+ lng);
-                $("#edit-campus-location-modal").trigger('click');
+                $("#edit-campus-location-modal-filter").trigger('click');
               }
             });
             console.log("send location have done.");
         });
-        $("#edit-campus-location-modal").addClass("active");
+        $("#edit-campus-location-modal-filter").addClass("active");
     }));
-    ($("#edit-campus-location-modal,#edit-campus-location-modal+.container .close-above-modal-button").on('click',function(){
-        $("#edit-campus-location-modal").removeClass("active");
-        $("#edit-campus-location-modal+.container").removeClass("active");
+    ($("#edit-campus-location-modal-filter,#edit-campus-location-modal-filter+.container .close-above-modal-button").on('click',function(){
+        $("#edit-campus-location-modal-filter").removeClass("active");
+        $("#edit-campus-location-modal-filter+.container").removeClass("active");
     }));
 </script>
