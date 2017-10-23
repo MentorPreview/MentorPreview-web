@@ -36,7 +36,8 @@
         });
         $("#edit-campus-location-modal-filter").addClass("active");
     }));
-    ($("#edit-campus-location-modal-filter,#edit-campus-location-modal-filter+.container .close-above-modal-button").on('click',function(){
+    ($("#edit-campus-location-modal-filter+.container .close-above-modal-button").on('click',function(){
+        console.log(".close-above-modal-button is clicked");
         $("#edit-campus-location-modal-filter").removeClass("active");
         $("#edit-campus-location-modal-filter+.container").removeClass("active");
     }));

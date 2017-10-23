@@ -34,7 +34,7 @@
             dataId_1 = "campusId";
         }
         data[dataId_1] = id;
-        console.log("data is {" + dataId_1 + ": " + id + " }");
+        console.log("{" + dataId_1 + ":" + id + "} is saved.");
         $.ajax({
           type: "POST",
           url: ajaxUrlBase + "/edit",

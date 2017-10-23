@@ -38,7 +38,6 @@
                 "mouseenter": function(){
                     var mentorName = $(this).attr('data');
                     $("#choose-mentor h2").text(mentorName);
-                    console.log("hello");
                 },
                 "mouseleave": function(){
                     $("#choose-mentor h2").text("Mentor");
@@ -121,7 +120,7 @@
         $("#modal-camp-img").attr('src',campImgUrl);
         
         $(".ajax-course").remove();
-        console.log("reloading camp {id:" + String(campId) + "} courses.");
+        console.log("reloading camp{id:" + String(campId) + "} courses.");
         $.ajax({
           type: "POST",
           url: "./camp/courses",
@@ -138,7 +137,7 @@
                     next();
                 });
             });
-            console.log("reloading camp {id:" + String(campId) + "} courses end.");
+            console.log("reloading camp{id:" + String(campId) + "} courses end.");
           }
         });
         
