@@ -5,12 +5,14 @@
 	outline:none;
 }
 
+/*ヘッダー*/
+
 header{
 	min-width: 1000px;
 	height:70px;
-	padding:30px 30px 10px;
 	margin-bottom: 20px;
 	border-bottom: 2px solid #ccc;
+	padding:30px 30px 10px;
 }
 
 header .logo{
@@ -21,15 +23,15 @@ header .logo{
 }
 
 header .menu{
-	margin-left: 100px;
+	float:left;
 	width:350px;
 	height:50px;
-	float:left;
+	margin-left: 100px;
 }
 
 header .menu .item{
-	padding-top: 28px;
 	width:24%;
+	padding-top: 28px;
 	display:inline-block;
 	text-align: center;
 	/*user-select:none;*/
@@ -47,26 +49,18 @@ header .menu .item:hover{
 
 .content{
 	width:778px;
-	padding:10px;
-	border:1px solid #ccc;
 	margin:auto;
 	margin-bottom: 30px;
+	padding:10px;
+	border:1px solid #ccc;
 }
 
-.content:after { /*floatの解除、ここがポイント*/
+.content:after { /*floatの解除*/
 	display:block;
 	clear:both;
 	height:0px;
 	visibility:hidden;
 	content:".";
-}
-h1{
-	height:100px;
-	-ms-user-select: none; /* IE 10+ */
-	-moz-user-select: -moz-none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
 }
 
 h2{
@@ -91,8 +85,8 @@ h2{
 .img-box{
 	float: left;
 	position: relative;
-	width:104px;
 	height:104px;
+	width:104px;
 	margin:0 5px 5px 0;
 	transition: 0.3s;
 	-ms-user-select: none; /* IE 10+ */
@@ -174,7 +168,6 @@ h2{
 	width:100%;
 	height:100%;
 	background:rgba(255,255,255,0.9);
-	
 	display: none;
 }
 
@@ -229,16 +222,16 @@ h2{
 
 
 .close-modal-button{
+	width:55px;
+	height:55px;
 	margin-left:550px;
 	margin-bottom: 20px;
 	border:none;
-	width:55px;
-	height:55px;
 	padding-bottom:20px;
 	font-size: 40px;
-	border-radius: 50%;
 	background:none;
 	color: #333;
+	border-radius: 50%;
 	-ms-user-select: none; /* IE 10+ */
 	-moz-user-select: -moz-none;
 	-khtml-user-select: none;
@@ -248,9 +241,9 @@ h2{
 }
 
 .choose-name{
-	margin-bottom:12px;
-	height:30px;
 	width:100%;
+	height:30px;
+	margin-bottom:12px;
 	text-align: center;
 	overflow:scroll;
 }
@@ -262,15 +255,15 @@ h2{
 
 .close-above-modal-button{
 	float:right;
-	margin-bottom: 3px;
-	border:none;
 	width:30px;
 	height:30px;
+	margin-bottom: 3px;
+	border:none;
 	padding-bottom:20px;
 	font-size: 22px;
-	border-radius: 50%;
-	background:none;
 	color: #333;
+	background:none;
+	border-radius: 50%;
 	-ms-user-select: none; /* IE 10+ */
 	-moz-user-select: -moz-none;
 	-khtml-user-select: none;
@@ -288,13 +281,13 @@ h2{
 }
 
 input[type="text"]{
+	width:400px;
+	height:50px;
 	background: rgba(255,255,255,0.8);
 	padding:5px 20px;
-	height:50px;
-	width:400px;
+	border: 1px solid #aaa;
 	border-radius: 10px;
 	font-size:30px;
-	border: 1px solid #aaa;
 	vertical-align: top;
 }
 
@@ -304,15 +297,15 @@ input[type="text"]::-webkit-input-placeholder {
 }
 
 input[type="submit"]{
-	margin-left: 10px;
-	font-size:20px;
-	width:100px;
 	height:60px;
-	font-weight:bold;
-	color: white;
+	width:100px;
+	margin-left: 10px;
 	padding:15px 0 25px;
 	border-radius: 10px;
 	border:none;
+	font-size:20px;
+	font-weight:bold;
+	color: white;
 	opacity:0.9;
 	transition:0.3;
 }
@@ -323,8 +316,8 @@ input[type="submit"]:hover{
 
 .open-modal-button{
 	border:none;
-	background:none;
 	margin-left: 8px;
+	background:none;
 	font-size:16px;
 	color: #ccc;
 	-ms-user-select: none; /* IE 10+ */
@@ -370,6 +363,8 @@ input[type="submit"]:hover{
 	border-radius: 10px;
 }
 
+
+
 #map{
 	width:100%;
 	height:600px;
@@ -408,7 +403,6 @@ input[type="submit"]:hover{
 	display: inline-block;
 	vertical-align: top;
 }
-
 
 
 /*
