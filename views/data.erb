@@ -47,6 +47,7 @@
 			<img id="camp-img" class="circle-icon" src="<%= camp.img_url %>">
 			<h3  id="camp-name" class="img-text"><%= camp.name %></h3>
 			<div class="img-info"></div>
+			<div id="camp-date" value="<%= camp.start_date.strftime("%Y年 %m月 %d日") %> ~ <%= camp.end_date.strftime("%Y年 %m月 %d日") %>"></div>
 		</div>
 		<% end %>
 	</div>

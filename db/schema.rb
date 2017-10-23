@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20171020083706) do
     t.string "name"
     t.integer "campus_id"
     t.string "img_url"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

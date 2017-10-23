@@ -5,6 +5,7 @@
         <button id="close-camp-modal-button" class="close-modal-button">×</button>
         <h2 id="modal-camp-name">キャンプ名</h2>
         <!--<h3 id="modal-camp-name-english">英語表記</h3>-->
+        <h3 id="modal-camp-date">日付</h2>
         <div>
             <img id="modal-camp-img" class="modal-img" src="./assets/images/camp/summer2017.png">
         </div>
@@ -26,6 +27,7 @@
         $(".open-choose-mentor-course-button,.choose-camp-mentor-button,.open-choose-camp-course-button").attr('value',campId);
         campImgUrl = campDiv.children("#camp-img").attr('src');
         campName = campDiv.children("#camp-name").text();
+        campDate = campDiv.children("#camp-date").attr('value');
         
         $(".ajax-course").remove();
         console.log("loading camp{id:" + String(campId) + "} courses.");
@@ -73,10 +75,12 @@
         
         $("#modal-camp-name").text(campName);
         $("#modal-camp-img").attr('src',campImgUrl);
+        $("#modal-camp-date").text(campDate);
         
         $("#choose-mentor-modal-filter+.container #camp-id").attr('value',campId);
         $("#choose-mentor-modal-filter+.container #camp-img").attr('src',campImgUrl);
         $("#choose-mentor-modal-filter+.container #camp-name").text(campName);
+        $("#choose-mentor-modal-filter+.container #camp-date").text(campDate);
         
         $("#camp-modal-filter").addClass("active");
     }));
