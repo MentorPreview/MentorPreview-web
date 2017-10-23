@@ -2,7 +2,7 @@
 </div>
 <div class="container">
     <div class="content">
-        <button class="close-modal-button">×</button>
+        <button id="close-campus-modal-button" class="close-modal-button">×</button>
         <h2 id="modal-campus-id" hidden></h2>
         <h2 id="modal-campus-name">キャンパス名</h2>
         <!--<h3 id="modal-campus-name-english">英語表記</h3>-->
@@ -11,7 +11,7 @@
         </div>
         <button id="campus-location-modal-button" class="open-modal-button">edit location <i class="fa fa fa-map-marker" aria-hidden="true"></i></button>
         <div class="items-box">
-            <div id="campus-camp-item"><h2>Camp<span class="choose-campus-camp-button" value=""> <i class="edit-button fa fa-th-list" aria-hidden="true"></i></span></h2></div>
+            <div id="campus-camp-item"><h2>Camp<span class="open-choose-campus-camp-button" value=""> <i class="edit-button fa fa-th-list" aria-hidden="true"></i></span></h2></div>
             <%= erb :_loader ,locals: {loader_id: "campus-camp-item"} %>
     	</div>
 	</div>
@@ -22,7 +22,7 @@
         console.log(".open-campus-modal-button is clicked.");
         campusDiv = $(this)
         campusId = campusDiv.children("#campus-id").attr('value');
-        $(".choose-campus-camp-button").attr('value',campusId);
+        $(".open-choose-campus-camp-button").attr('value',campusId);
         campusImgUrl = campusDiv.children("#campus-img").attr('src');
         campusName = campusDiv.children("#campus-name").text();
         
@@ -59,7 +59,8 @@
         
         $("#campus-modal-filter").addClass("active");
     }));
-    ($(".close-modal-button").on('click',function(){
+    ($("#close-campus-modal-button").on('click',function(){
+        console.log("#close-campus-modal-button is clicked.");
         $(".filter.active").removeClass("active");
         $(".loader").show();
     }));

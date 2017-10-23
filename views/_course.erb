@@ -2,7 +2,7 @@
 </div>
 <div class="container">
     <div class="content">
-        <button class="close-modal-button">×</button>
+        <button id="close-course-modal-button" class="close-modal-button">×</button>
         <h2 id="modal-course-name">コース名</h2>
         <!--<h3 id="modal-course-name-english">英語表記</h3>-->
         <div>
@@ -48,8 +48,8 @@
     $("#modal-course-img").attr('src',courseImgUrl);
     $("#course-modal-filter").addClass("active");
 }));
-($(".close-modal-button").on('click',function(){
-    console.log(".close-modal-button is clicked.");
+($("#close-course-modal-button").on('click',function(){
+    console.log("#close-course-modal-button is clicked.");
     $(".filter.active").removeClass("active");
     $(".loader").show();
 }));

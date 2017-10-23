@@ -2,14 +2,14 @@
 </div>
 <div class="container">
     <div class="content">
-        <button class="close-modal-button">×</button>
+        <button id="close-mentor-modal-button" class="close-modal-button">×</button>
         <h2 id="modal-mentor-name">メンター名</h2>
         <!--<h3 id="modal-mentor-name-english">英語表記</h3>-->
         <div>
             <img id="modal-mentor-img" class="modal-img" src="./assets/images/mentors/funamin.jpg">
         </div>
         <div class="items-box">
-            <div id="mentor-course-item"><h2>Course<span class="choose-mentor-course-button" value=""> <i class="edit-button fa fa-th-list" aria-hidden="true"></i></span></h2></div>
+            <div id="mentor-course-item"><h2>Course<span class="open-choose-mentor-course-button" value=""> <i class="edit-button fa fa-th-list" aria-hidden="true"></i></span></h2></div>
             <%= erb :_loader ,locals: {loader_id: "mentor-course-item"} %>
         </div>
 	</div>
@@ -19,10 +19,10 @@
     ($(".open-mentor-modal-button").on('click',function(){
         console.log(".open-mentor-modal-button is clicked.");
         mentorDiv = $(this);
-        mentorId = mentorDiv.children("#mentor-id").attr('value');
-        $(".choose-mentor-course-button").attr('value',mentorId);
-        mentorImgUrl = mentorDiv.children("#mentor-img").attr('src');
-        mentorName = mentorDiv.children("#mentor-name").text();
+        mentorId = mentorDiv.children(".mentor-id").attr('value');
+        $(".open-choose-mentor-course-button").attr('value',mentorId);
+        mentorImgUrl = mentorDiv.children(".mentor-img").attr('src');
+        mentorName = mentorDiv.children(".mentor-name").text();
         
         $(".ajax-course").remove();
         console.log("loading mentor{id:" + String(mentorId) + "} courses.");
@@ -56,8 +56,8 @@
         // モーダルを表示する
         $("#mentor-modal-filter").addClass("active");
     }));
-    ($(".close-modal-button").on('click',function(){
-        console.log(".close-modal-button is clicked.");
+    ($("#close-mentor-modal-button").on('click',function(){
+        console.log("#close-mentor-modal-button is clicked.");
         $(".filter.active").removeClass("active");
         $(".loader").show();
     }));

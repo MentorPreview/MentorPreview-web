@@ -28,9 +28,9 @@
 		</h2>
 		<% @mentors.each do |mentor| %>
 		<div class="img-box open-mentor-modal-button">
-			<div id="mentor-id" value="<%= mentor.id %>"></div>
-			<img id="mentor-img" class="circle-icon" src="<%= mentor.img_url %>">
-			<h3  id="mentor-name" class="img-text"><%= mentor.name %></h3>
+			<div class="mentor-id" value="<%= mentor.id %>"></div>
+			<img class="mentor-img circle-icon" src="<%= mentor.img_url %>">
+			<h3 class="mentor-name img-text"><%= mentor.name %></h3>
 			<div class="img-info"></div>
 		</div>
 		<% end %>

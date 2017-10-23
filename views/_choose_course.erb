@@ -15,7 +15,7 @@
 	</div>
 </div>
 <script>
-    ($(".choose-mentor-course-button,.choose-camp-course-button").on('click',function(){
+    ($(".open-choose-mentor-course-button,.open-choose-camp-course-button").on('click',function(){
         var div = $(this);
         var id = div.attr('value');
         var divClass = $(this).attr('class');
@@ -29,10 +29,10 @@
         var ajaxUrlBase = "";
         var dataId_1 = "";
         var data = {};
-        if(divClass == "choose-mentor-course-button"){
+        if(divClass == "open-choose-mentor-course-button"){
             ajaxUrlBase = "./mentor/courses";
             dataId_1 = "mentorId";
-        }else if(divClass == "choose-camp-course-button"){
+        }else if(divClass == "open-choose-camp-course-button"){
             ajaxUrlBase = "./camp/courses";
             dataId_1 = "campId";
         }
@@ -116,12 +116,12 @@
         
         var divClass = $(".close-above-modal-button").attr('value');
         
-        if(divClass=="choose-mentor-course-button"){
+        if(divClass=="open-choose-mentor-course-button"){
             console.log("Jump to #mentor-data.mentor-modal-button");
             $(this).parent().prev(".mentor-modal-button").removeAttr("id");
             $(this).parent().prev(".mentor-modal-button").attr('id',"mentor-data");
             $("#mentor-data.mentor-modal-button").trigger("click");
-        }else if(divClass=="choose-camp-course-button"){
+        }else if(divClass=="open-choose-camp-course-button"){
             console.log("Jump to #camp-data.camp-modal-button");
             $("this+.mentor-modal-button").attr('id',"camp-data");
             $("#camp-data.camp-modal-button").trigger("click");
@@ -142,7 +142,7 @@
         }
         var id = div.children("#mentor-id").attr('value');
         
-        $(".choose-mentor-course-button").attr('value',id);
+        $(".open-choose-mentor-course-button").attr('value',id);
         var imgUrl = div.children("#mentor-img").attr('src');
         var name = div.children("#mentor-name").text();
         

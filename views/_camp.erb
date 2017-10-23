@@ -2,14 +2,14 @@
 </div>
 <div class="container">
     <div class="content">
-        <button class="close-modal-button">×</button>
+        <button id="close-camp-modal-button" class="close-modal-button">×</button>
         <h2 id="modal-camp-name">キャンプ名</h2>
         <!--<h3 id="modal-camp-name-english">英語表記</h3>-->
         <div>
             <img id="modal-camp-img" class="modal-img" src="./assets/images/camp/summer2017.png">
         </div>
         <div class="items-box">
-            <div id="camp-course-item"><h2>Course<span class="choose-camp-course-button" value=""> <i class="edit-button fa fa-th-list" aria-hidden="true"></i></span></h2></div>
+            <div id="camp-course-item"><h2>Course<span class="open-choose-camp-course-button" value=""> <i class="edit-button fa fa-th-list" aria-hidden="true"></i></span></h2></div>
             <%= erb :_loader ,locals: {loader_id: "camp-course-item"} %>
     	</div>
     	<div class="items-box">
@@ -23,7 +23,7 @@
         console.log(".open-camp-modal-button is clicked.");
         campDiv = $(this);
         campId = campDiv.children("#camp-id").attr('value');
-        $(".choose-mentor-course-button,.choose-camp-mentor-button,.choose-camp-course-button").attr('value',campId);
+        $(".open-choose-mentor-course-button,.choose-camp-mentor-button,.open-choose-camp-course-button").attr('value',campId);
         campImgUrl = campDiv.children("#camp-img").attr('src');
         campName = campDiv.children("#camp-name").text();
         
@@ -80,8 +80,8 @@
         
         $("#camp-modal-filter").addClass("active");
     }));
-    ($(".close-modal-button").on('click',function(){
-        console.log(".close-modal-button is clicked.");
+    ($("#close-camp-modal-button").on('click',function(){
+        console.log("#close-camp-modal-button is clicked.");
         $(".filter.active").removeClass("active");
         $(".loader").show();
     }));
