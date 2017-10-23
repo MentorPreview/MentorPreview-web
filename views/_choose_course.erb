@@ -37,7 +37,7 @@
             dataId_1 = "campId";
         }
         data[dataId_1] = id;
-        console.log("{" + dataId_1 + ":" + id + "} is saved.");
+        console.log("{" + dataId_1 + ":" + id + "is saved.}");
         $.ajax({
           type: "POST",
           url: ajaxUrlBase + "/edit",
@@ -131,6 +131,7 @@
     ($("#mentor-data.mentor-modal-button,#camp-data.course-modal-button").on('click',function(){
         console.log("#camp-data.camp-modal-button activate.");
         var divId = $(this).attr('id');
+        console.log(divId + "activate");
         var div = $(this);
         var category = "";
         

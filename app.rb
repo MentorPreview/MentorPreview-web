@@ -10,7 +10,7 @@ get '/' do
 end
 
 get '/preview' do
-  @camps = Camp.all.order('start_date desc')
+  @camps = Camp.all.order('id asc')
   @courses = Course.all.order('id asc')
   @mentors = Mentor.all.order('id asc')
   @campus = Campus.all.order('id asc')
@@ -18,7 +18,7 @@ get '/preview' do
 end
 
 get '/data' do
-  @camps = Camp.all.order('start_date desc')
+  @camps = Camp.all.order('id asc')
   @courses = Course.all.order('id asc')
   @mentors = Mentor.all.order('id asc')
   @campus = Campus.all.order('id asc')

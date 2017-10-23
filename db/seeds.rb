@@ -1,3 +1,5 @@
+require 'json'
+
 Camp.destroy_all
 Course.destroy_all
 Mentor.destroy_all
@@ -65,30 +67,22 @@ mentors = Mentor.create([
     {name: "ツーブロ", img_url: "./assets/images/mentors/twoblo.jpg"},
 ])
     
-campus = Campus.create([
-    {
-        official_name:"東京大学 本郷キャンパス",
-        common_name: "東大本郷",
-        university_name: "東京大学",
-        campus_name: "本郷キャンパス",
-        postal_code: "113-0033",
-        address: "東京都文京区本郷7-3-1",
-        lat: 35.711517, 
-        lng: 139.760136,
-        img_url: "./assets/images/campus/toudai_hongo.jpg"
-    },
-    {
-        official_name:"東京大学 浅野キャンパス",
-        common_name: "東大浅野",
-        university_name: "東京大学",
-        campus_name: "浅野キャンパス",
-        postal_code: "113-0032",
-        lat: 35.716061, 
-        lng: 139.763384,
-        address: "東京都文京区弥生2丁目2-11-16",
-        img_url: "./assets/images/campus/toudai_asano.jpg"
-    },
-])
+File.open('db/json/campus.json') do |file|
+  hash = JSON.load(file)
+  hash.each do |element|
+    Campus.create(
+        official_name: element["official_name"],
+        common_name: element["common_name"],
+        university_name: element["university_name"],
+        campus_name: element["campus_name"],
+        postal_code: element["postal_code"],
+        address: element["address"],
+        lat: element["lat"], 
+        lng: element["lng"],
+        img_url: element["img_url"]
+    )
+  end
+end
 
 camps = Camp.create([
     {
@@ -435,19 +429,10 @@ camps = Camp.create([
     },
 ])
 
-Camp.first.courses << courses[0]
-Camp.first.courses << courses[1]
-Camp.first.courses << courses[2]
-
-Camp.first.mentors << mentors[0]
-Camp.first.mentors << mentors[1]
-
 mentors[0].courses << courses[0]
 mentors[0].courses << courses[1]
 mentors[1].courses << courses[1]
 mentors[2].courses << courses[2]
-
-campus[0].camps << camps[0]
 
 Album.create([
     {url: 'https://photos.app.goo.gl/XIoOCJo4JQvMVw6w2'},
