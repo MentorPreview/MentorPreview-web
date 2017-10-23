@@ -16,13 +16,14 @@
 </div>
 <script>
 ($(".open-course-modal-button").on('click',function(){
-    console.log(".img-box.course-modal-button activate.");
+    console.log(".open-course-modal-button is clicked.");
     var courseDiv = $(this);
     var courseId = courseDiv.children("#course-id").attr('value');
     var courseImgUrl = courseDiv.children("#course-img").attr('src');
     var courseName = courseDiv.children("#course-name").text();
         
     $(".ajax-mentor").remove();
+    console.log("loading course{id:" + String(courseId) + "} mentors.");
     $.ajax({
         type: "POST",
         url: "./course/mentors",
@@ -39,6 +40,7 @@
                     next();
                 });
             })
+            console.log("loading course{id:" + String(courseId) + "} mentors end.");
         }
     });
     
@@ -47,6 +49,7 @@
     $("#course-modal-filter").addClass("active");
 }));
 ($(".close-modal-button").on('click',function(){
+    console.log(".close-modal-button is clicked.");
     $(".filter.active").removeClass("active");
     $(".loader").show();
 }));

@@ -12,9 +12,11 @@
 </div>
 <script>
     ($(".open-add-mentor-modal-button").on('click',function(){
+        console.log(".open-add-mentor-modal-button is clicked.");
         $("#add-mentor-modal-filter").addClass("active");
     }));
     ($(".close-modal-button").on('click',function(){
+        console.log(".close-modal-button is clicked.");
         $(".filter.active").removeClass("active");
     }));
 </script>

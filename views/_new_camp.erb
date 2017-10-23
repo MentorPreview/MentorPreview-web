@@ -12,9 +12,11 @@
 </div>
 <script>
     ($(".open-add-camp-modal-button").on('click',function(){
+        console.log(".open-add-camp-modal-button is clicked.");
         $("#add-camp-modal-filter").addClass("active");
     }));
     ($(".close-modal-button").on('click',function(){
+        console.log(".close-modal-button is clicked.");
         $(".filter.active").removeClass("active");
     }));
     

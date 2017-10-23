@@ -94,14 +94,14 @@
                     });
                 }
             });
-            console.log("loading camp mentor edit have done.");
+            console.log("loading camp mentor edit end.");
           }
         });
         
         $("#choose-mentor-modal-filter").addClass("active");
     }));
     ($("#choose-mentor-modal-filter+.container .close-above-modal-button").on('click',function(){
-        console.log("Close above modal button activate");
+        console.log(".close-modal-button is clicked.");
         $(".filter.above-modal.active").removeClass("active");
         $(".above-loader").show();
         $(".loader").show();
@@ -121,7 +121,7 @@
         $("#modal-camp-img").attr('src',campImgUrl);
         
         $(".ajax-course").remove();
-        console.log("reloading camp " + String(campId) + " courses.");
+        console.log("reloading camp {id:" + String(campId) + "} courses.");
         $.ajax({
           type: "POST",
           url: "./camp/courses",
@@ -138,12 +138,12 @@
                     next();
                 });
             });
-            console.log("reloading camp " + String(campId) + " courses have done.");
+            console.log("reloading camp {id:" + String(campId) + "} courses end.");
           }
         });
         
         $(".ajax-mentor").remove();
-        console.log("reloading camp " + String(campId) + " mentors.");
+        console.log("reloading camp{id:" + String(campId) + "} mentors.");
         $.ajax({
           type: "POST",
           url: "./camp/mentors",
@@ -160,7 +160,7 @@
                     next();
                 });
             });
-            console.log("reloading camp " + String(campId) + " mentors have done.");
+            console.log("reloading camp{id:" + String(campId) + "} mentors end.");
           }
         });
         

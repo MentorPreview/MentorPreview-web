@@ -19,15 +19,16 @@
 <script>
     // 押されるものはdata.erbにある
     ($(".open-campus-modal-button").on('click',function(){
-        console.log(".img-box.campus-modal-button activate.");
+        console.log(".open-campus-modal-button is clicked.");
         campusDiv = $(this)
         campusId = campusDiv.children("#campus-id").attr('value');
-        console.log(campusId);
         $(".choose-campus-camp-button").attr('value',campusId);
         campusImgUrl = campusDiv.children("#campus-img").attr('src');
         campusName = campusDiv.children("#campus-name").text();
         
         $(".ajax-camp").remove();
+        console.log("loading choose-campus-modal.");
+        
         $.ajax({
           type: "POST",
           url: "./campus/camps",
@@ -44,6 +45,7 @@
                     next();
                 });
             })
+            console.log("loading choose-campus-modal end.");
           }
         });
         

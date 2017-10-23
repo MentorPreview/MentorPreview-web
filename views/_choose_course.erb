@@ -19,12 +19,12 @@
         var div = $(this);
         var id = div.attr('value');
         var divClass = $(this).attr('class');
-        console.log("." + divClass + " activate.");
+        console.log("." + divClass + " id clicked.");
         
         $(".close-above-modal-button").attr('value',divClass);
         
         $(".ajax-course-choose").remove();
-        console.log("loading mentor course edit.");
+        console.log("loading choose-course-modal.");
         
         var ajaxUrlBase = "";
         var dataId_1 = "";
@@ -103,13 +103,13 @@
                     });
                 }
             });
-            console.log("loading mentor course edit have done.");
+            console.log("loading choose-course-modal end.");
           }
         });
         $("#choose-course-modal-filter").addClass("active");
     }));
     ($("#choose-course-modal-filter+.container .close-above-modal-button").on('click',function(){
-        console.log("Close above modal button activate");
+        console.log(".close-modal-button is clicked.");
         $(".filter.above-modal.active").removeClass("active");
         $(".above-loader").show();
         $(".loader").show();
@@ -150,7 +150,7 @@
         $("#modal-mentor-img").attr('src',imgUrl);
         
         $(".ajax-course").remove();
-        console.log("reloading mentor " + String(id) + " courses.");
+        console.log("reloading mentor{id:" + String(id) + "} courses.");
         $.ajax({
           type: "POST",
           url: "./mentor/courses",
@@ -167,7 +167,7 @@
                     next();
                 });
             })
-            console.log("reloading mentor " + String(id) + " courses have done.");
+            console.log("reloading mentor{id:" + String(id) + "} courses end.");
           }
         });
         

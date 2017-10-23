@@ -12,9 +12,11 @@
 </div>
 <script>
     ($(".open-add-album-modal-button").on('click',function(){
+        console.log(".open-add-album-modal-buttonn is clicked.");
         $("#add-album-modal-filter").addClass("active");
     }));
     ($(".close-modal-button").on('click',function(){
+        console.log(".close-modal-button is clicked.");
         $(".filter.active").removeClass("active");
     }));
     

@@ -17,7 +17,7 @@
 <script>
     // 押されるものはdata.erbにある
     ($(".open-mentor-modal-button").on('click',function(){
-        console.log(".img-box.mentor-modal-button activte");
+        console.log(".open-mentor-modal-button is clicked.");
         mentorDiv = $(this);
         mentorId = mentorDiv.children("#mentor-id").attr('value');
         $(".choose-mentor-course-button").attr('value',mentorId);
@@ -25,7 +25,7 @@
         mentorName = mentorDiv.children("#mentor-name").text();
         
         $(".ajax-course").remove();
-        console.log("loading mentor " + String(mentorId) + " courses.");
+        console.log("loading mentor{id:" + String(mentorId) + "} courses.");
         $.ajax({
           type: "POST",
           url: "./mentor/courses",
@@ -42,7 +42,7 @@
                     next();
                 });
             })
-            console.log("loading mentor " + String(mentorId) + " courses have done.");
+            console.log("loading mentor{id:" + String(mentorId) + "} courses end.");
           }
         });
         
@@ -57,7 +57,7 @@
         $("#mentor-modal-filter").addClass("active");
     }));
     ($(".close-modal-button").on('click',function(){
-        console.log("close button activate.");
+        console.log(".close-modal-button is clicked.");
         $(".filter.active").removeClass("active");
         $(".loader").show();
     }));

@@ -50,11 +50,6 @@
                 $(item).delay(100).fadeIn(10);
             });
             
-            $(".ajax-camp-choose").hover(function(){
-                console.log("hello");
-            });
-            
-            
             $(".ajax-camp-choose").on({
                 "mouseenter": function(){
                     var campName = $(this).attr('data');
@@ -105,6 +100,7 @@
                     });
                 }
             });
+            
             $(".ajax-camp-choose").each(function(i,item){
                 if ($(item).hasClass('on')){
                     $(item).delay(i*50).queue(function(next) {
@@ -118,7 +114,7 @@
                     });
                 }
             });
-            console.log("loading campus camp edit have done.");
+            console.log("loading campus camp edit end.");
           }
         });
         $("#choose-camp-modal-filter").addClass("active");
@@ -140,7 +136,7 @@
     ($("#campus-data.campus-modal-button").on('click',function(){
         console.log("#campus-data.campus-modal-button activate.");
         var divId = $(this).attr('id');
-        console.log(divId + "activate");
+        console.log(divId + " activate");
         var div = $(this);
         var category = "";
         if(divId=="campus-data"){
@@ -158,7 +154,7 @@
         $("#modal-campus-img").attr('src',imgUrl);
         
         $(".ajax-camp").remove();
-        console.log("reloading campus " + String(id) + " camps.");
+        console.log("reloading campus{id:" + String(id) + "} camps.");
         $.ajax({
           type: "POST",
           url: "./campus/camps",
@@ -175,7 +171,7 @@
                     next();
                 });
             })
-            console.log("reloading camp " + String(id) + " courses have done.");
+            console.log("reloading campus{id:" + String(id) + "} camps end.");
           }
         });
         

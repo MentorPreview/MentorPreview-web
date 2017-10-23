@@ -20,16 +20,15 @@
 </div>
 <script>
     ($(".open-camp-modal-button").on('click',function(){
-        console.log(".img-box.camp-modal-button activate.");
+        console.log(".open-camp-modal-button is clicked.");
         campDiv = $(this);
         campId = campDiv.children("#camp-id").attr('value');
-        console.log(campId);
         $(".choose-mentor-course-button,.choose-camp-mentor-button,.choose-camp-course-button").attr('value',campId);
         campImgUrl = campDiv.children("#camp-img").attr('src');
         campName = campDiv.children("#camp-name").text();
         
         $(".ajax-course").remove();
-        console.log("loading camp " + String(campId) + " courses.");
+        console.log("loading camp{id:" + String(campId) + "} courses.");
         $.ajax({
           type: "POST",
           url: "./camp/courses",
@@ -46,12 +45,12 @@
                     next();
                 });
             });
-            console.log("loading camp " + String(campId) + " courses have done.");
+            console.log("loading camp{id:" + String(campId) + "} courses end.");
           }
         });
         
         $(".ajax-mentor").remove();
-        console.log("loading camp " + String(campId) + " mentors.");
+        console.log("loading camp{id:" + String(campId) + "} mentors.");
         $.ajax({
           type: "POST",
           url: "./camp/mentors",
@@ -68,7 +67,7 @@
                     next();
                 });
             });
-            console.log("loading camp " + String(campId) + " mentors have done.");
+            console.log("loading camp{id:" + String(campId) + "} mentors end.");
           }
         });
         
@@ -82,7 +81,7 @@
         $("#camp-modal-filter").addClass("active");
     }));
     ($(".close-modal-button").on('click',function(){
-        console.log("Close button activate.");
+        console.log(".close-modal-button is clicked.");
         $(".filter.active").removeClass("active");
         $(".loader").show();
     }));
