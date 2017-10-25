@@ -8,25 +8,31 @@
 /*ヘッダー*/
 
 header{
-	min-width: 1000px;
+	display:block;
+	margin:auto;
+	width:800px;
 	height:70px;
 	margin-bottom: 20px;
 	/*border-bottom: 2px solid #ccc;*/
 	padding:30px 30px 10px;
 }
 
-header .logo{
+header .logo-box{
 	float:left;
-	display: inline-block;
+	width:30%;
 	height:50px;
 	font-size: 40px;
 }
 
-header .menu{
-	float:left;
-	width:350px;
+header .logo-box .logo{
+	display: inline-block;
 	height:50px;
-	margin-left: 100px;
+}
+
+header .menu{
+	float:right;
+	width:50%;
+	height:50px;
 }
 
 header .menu .item{
