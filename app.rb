@@ -1,6 +1,7 @@
 require 'bundler/setup'
 Bundler.require
 require 'sinatra/reloader' if development?
+require 'json'
 require './models'
 
 enable :sessions
@@ -146,12 +147,21 @@ end
 
 post '/course/mentors' do
   course = Course.find(params[:courseId])
-  html = ""
+  json = {
+    "response": {
+      "course": course.name,
+      "mentors": []
+    }
+  }
   course.mentors.order('id asc').each do |mentor|
-    # html += '<p class="ajax-mentor" hidden>' + mentor.name.to_s + '</p>'
-    html += '<img class="ajax-mentor small-img" src="' + mentor.img_url.to_s + '">'
+    mentor_data = {
+      id: mentor.id,
+      name: mentor.name,
+      img_url: mentor.img_url
+    }
+    json[:response][:mentors] << mentor_data
   end
-  html
+  json.to_json
 end
 
 post '/campus/camps' do

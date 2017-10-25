@@ -27,8 +27,18 @@
     $.ajax({
         type: "POST",
         url: "./course/mentors",
+        dataType: "json",
         data: {"courseId": courseId},
-        success: function(html){
+        success: function(json){
+            var response = json["response"]["mentors"];
+            var mentors = response;
+            console.log(mentors);
+            var html = "";
+            mentors.forEach(function(mentor,index){
+                html += '<img class="ajax-mentor small-img" src="' + mentor["img_url"] + '">'
+                console.log(mentor);
+            });
+            console.log(html);
             $("#course-mentor-item").append(html);
             $(".loader#course-mentor-item").fadeOut(100);
             $("#course-mentor-item .ajax-mentor").each(function(i,item){

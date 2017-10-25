@@ -16,6 +16,7 @@ GEM
     backports (3.8.0)
     concurrent-ruby (1.0.5)
     i18n (0.8.6)
+    json (2.0.2)
     minitest (5.10.3)
     multi_json (1.12.2)
     mustermann (1.0.1)
@@ -49,6 +50,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  json
   pg
   rake
   sinatra
