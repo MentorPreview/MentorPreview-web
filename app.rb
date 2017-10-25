@@ -147,6 +147,9 @@ end
 
 post '/course/mentors' do
   course = Course.find(params[:courseId])
+  if Course.find_by(identifier: params[:identifier]) != nil
+    course = Course.find_by(identifier: params[:identifier])
+  end
   json = {
     "response": {
       "course": course.name,
