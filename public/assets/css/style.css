@@ -11,7 +11,7 @@ header{
 	min-width: 1000px;
 	height:70px;
 	margin-bottom: 20px;
-	border-bottom: 2px solid #ccc;
+	/*border-bottom: 2px solid #ccc;*/
 	padding:30px 30px 10px;
 }
 
@@ -38,7 +38,7 @@ header .menu .item{
 }
 
 header .menu .item:hover{
-	color:#83efe3;;
+	opacity:0.8;
 	cursor: pointer;
 }
 
@@ -54,6 +54,13 @@ header .menu .item:hover{
 	padding:10px;
 	border:1px solid #ccc;
 }
+
+.base-modal{
+	border:none;
+	/*border-radius:6px;*/
+	/*box-shadow: 0 2px 10px rgba(0,0,0,.2);*/
+}
+
 
 .content:after { /*floatの解除*/
 	display:block;
@@ -73,7 +80,8 @@ h2{
 }
 
 .header{
-	border-bottom:1px solid #ccc;
+	padding-bottom:6px;
+	border-bottom:1px solid #eee;
 	margin-bottom:5px;
 }
 
@@ -329,7 +337,7 @@ input[type="submit"]:hover{
 }
 
 .open-modal-button:hover{
-	color: #83efe3;
+	opacity:0.8;
 }
 
 .open-modal-button:active{
@@ -351,7 +359,7 @@ input[type="submit"]:hover{
 }
 
 .course-order-button:hover{
-	color: #83efe3;
+	opacity:0.8;
 }
 
 .course-order-button:active{
@@ -389,7 +397,7 @@ input[type="submit"]:hover{
 }
 
 #map .campus-camp:hover{
-	color: #83efe3;
+	opacity:0.8;
 	cursor: pointer;
 }
 
@@ -433,7 +441,7 @@ svg rect{
 }
 
 .edit-button:hover{
-	color: #83efe3;
+	opacity:0.8;
 }
 
 .album-img{
