@@ -15,28 +15,6 @@ courseTypes = CourseType.create([
     {name: "creative"},
     {name: "design"},
 ])
-
-courses = Course.create([
-    {name: "iPhoneアプリプログラミングコース", img_url: "./assets/images/course/iPhone.png"},
-    {name: "Androidアプリプログラミングコース", img_url: "./assets/images/course/Android.png"},
-    {name: "Unity®ゲームプログラミングコース（2D・3D）", img_url: "./assets/images/course/Unity.png"},
-    {name: "Webデザインコース（HTML/CSS）", img_url: "./assets/images/course/webD.png"},
-    {name: "Webサービスプログラミングコース（Ruby）", img_url: "./assets/images/course/webS.png"},
-    {name: "映像制作コース", img_url: "./assets/images/course/Movie.png"},
-    {name: "アニメーションコース", img_url: "./assets/images/course/Animation.png"},
-    {name: "デザイナーコース（Photoshop/Illustrator）", img_url: "./assets/images/course/Designer.png"},
-    {name: "メディアアートプログラミングコース", img_url: "./assets/images/course/MediaArt.png"},
-    {name: "ゲームクリエイター体験（2D）コース", img_url: "./assets/images/course/2D.png"},
-    {name: "Minecraftプログラミングコース", img_url: "./assets/images/course/Minecraft.png"},
-    {name: "デジタルミュージックコース", img_url: "./assets/images/course/DTM.png"},
-    {name: "Maya 3DCGコース", img_url: "./assets/images/course/Maya.png"},
-    {name: "初音ミクV3コース", img_url: "./assets/images/course/Miku.png"},
-    {name: "LINEスタンプクリエイターコース", img_url: "./assets/images/course/Line.png"},
-    {name: "IoT入門 with MESH コース", img_url: "./assets/images/course/IoT.png"},
-    {name: "カメラ＆フォトグラフィコース", img_url: "./assets/images/course/Camera.png"},
-    ])
-    
-courses[0].course_types << courseTypes[0]
     
 mentors = Mentor.create([
     {name: "バッハ", img_url: "./assets/images/mentors/bach.jpg"},
@@ -66,6 +44,17 @@ mentors = Mentor.create([
     {name: "とし", img_url: "./assets/images/mentors/toshi.jpg"},
     {name: "ツーブロ", img_url: "./assets/images/mentors/twoblo.jpg"},
 ])
+
+File.open('db/json/courses.json') do |file|
+  hash = JSON.load(file)
+  hash.each do |element|
+    Course.create(
+        name: element["name"],
+        identifier: element["identifier"],
+        img_url: element["img_url"]
+    )
+  end
+end
     
 File.open('db/json/campus.json') do |file|
   hash = JSON.load(file)
@@ -428,11 +417,6 @@ camps = Camp.create([
         end_date:'2017-03-20',
     },
 ])
-
-mentors[0].courses << courses[0]
-mentors[0].courses << courses[1]
-mentors[1].courses << courses[1]
-mentors[2].courses << courses[2]
 
 Album.create([
     {url: 'https://photos.app.goo.gl/XIoOCJo4JQvMVw6w2'},

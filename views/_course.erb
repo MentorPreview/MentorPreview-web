@@ -36,7 +36,6 @@
             mentors.forEach(function(mentor,index){
                 html += '<img class="ajax-mentor small-img" src="' + mentor["img_url"] + '">'
             });
-            console.log(html);
             $("#course-mentor-item").append(html);
             $(".loader#course-mentor-item").fadeOut(100);
             $("#course-mentor-item .ajax-mentor").each(function(i,item){
