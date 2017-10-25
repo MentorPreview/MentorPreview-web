@@ -277,7 +277,7 @@
             var campusMarker<%= campus.id %> = new google.maps.Marker({
                 position: {lat: <%= campus.lat %>, lng: <%= campus.lng %>},
                 map: map,
-                icon: {url: '/assets/images/pin/university.png',scaledSize: new google.maps.Size(45, 60)},
+                icon: {url: '/assets/images/pin/campus_black.png',scaledSize: new google.maps.Size(45, 45)},
                 title: '<%= campus.common_name %>',
             });
             
@@ -295,7 +295,7 @@
                             lng: <%= campus.lng + 0.01 * Math.cos(-1 + 2 * index.to_f / mentors.uniq.length.to_f * Math::PI) %>
                         },
                         map: map,
-                        icon: {url: '/assets/images/pin/mentor.png',scaledSize: new google.maps.Size(30,40)},
+                        icon: {url: '/assets/images/pin/mentor_red.png',scaledSize: new google.maps.Size(30,30)},
                         title: '<%= mentor.name %>',
                     });
                 <% end %>
