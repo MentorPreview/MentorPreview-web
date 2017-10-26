@@ -50,7 +50,7 @@ post '/mentors' do
       img_url: mentor.img_url
     }
     mentor.courses.each do |course|
-      mentor_data["courses"] << course.identifier
+      mentor_data[:courses] << course.identifier
     end
     json[:response][:mentors] << mentor_data
   end
