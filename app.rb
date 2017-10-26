@@ -6,6 +6,7 @@ require './models'
 
 enable :sessions
 
+# 各ページ読み込み時
 get '/' do
 	erb :mypage
 end
@@ -35,6 +36,7 @@ get '/gallary' do
 	erb :gallary
 end
 
+# 大まかなデータ提供用API
 post '/mentors' do
   mentors = Mentor.all.order('id asc')
   json = {
