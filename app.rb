@@ -31,6 +31,24 @@ get '/gallary' do
 	erb :gallary
 end
 
+post '/mentors' do
+  mentors = Mentor.all.order('id asc')
+  json = {
+    "response": {
+      "mentors": []
+    }
+  }
+  mentors.order('id asc').each do |mentor|
+    mentor_data = {
+      id: mentor.id,
+      name: mentor.name,
+      img_url: mentor.img_url
+    }
+    json[:response][:mentors] << mentor_data
+  end
+  json.to_json
+end
+
 post '/camps/create' do
   Camp.create(
     name: params[:name],
