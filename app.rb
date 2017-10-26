@@ -44,13 +44,16 @@ post '/camps' do
       "camps": []
     }
   }
+  base_url = 'https://mentor-preview.herokuapp.com'
   camps.order('id asc').each do |camp|
     camp_data = {
       name: camp.name,
-      img_url: camp.img_url,
       start_date: camp.start_date,
       end_date: camp.end_date,
     }
+    camp_img_url = camp.img_url
+    camp_img_url.slice!(0)
+    camp_data[:img_url] = base_url + camp_img_url
     camp_data[:campus] = Campus.find_by(id: camp.campus_id)
     json[:response][:camps] << camp_data
   end
