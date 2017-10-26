@@ -204,12 +204,15 @@ post '/course/mentors' do
       "mentors": []
     }
   }
+  base_url = 'https://mentor-preview.herokuapp.com'
   course.mentors.order('id asc').each do |mentor|
     mentor_data = {
       id: mentor.id,
       name: mentor.name,
-      img_url: mentor.img_url
     }
+    mentor_img_url = mentor.img_url
+    mentor_img_url.slice!(0)
+    mentor_data[:img_url] = base_url + mentor_img_url
     json[:response][:mentors] << mentor_data
   end
   json.to_json
