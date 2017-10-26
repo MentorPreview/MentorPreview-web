@@ -164,7 +164,7 @@ post '/mentor/courses' do
 end
 
 post '/course/mentors' do
-  course = Course.find(params[:courseId])
+  course = Course.find_by(id: params[:courseId])
   if Course.find_by(identifier: params[:identifier]) != nil
     course = Course.find_by(identifier: params[:identifier])
   end
