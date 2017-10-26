@@ -37,6 +37,26 @@ get '/gallary' do
 end
 
 # 大まかなデータ提供用API
+post '/camps' do
+  camps = Camp.all.order('id asc')
+  json = {
+    "response": {
+      "camps": []
+    }
+  }
+  camps.order('id asc').each do |camp|
+    camp_data = {
+      name: camp.name,
+      img_url: camp.img_url,
+      start_date: camp.start_date,
+      end_date: camp.end_date,
+    }
+    camp_data[:campus] = Campus.find_by(id: camp.campus_id)
+    json[:response][:camps] << camp_data
+  end
+  json.to_json
+end
+
 post '/mentors' do
   mentors = Mentor.all.order('id asc')
   json = {
