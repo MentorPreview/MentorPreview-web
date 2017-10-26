@@ -42,6 +42,7 @@ post '/mentors' do
     mentor_data = {
       id: mentor.id,
       name: mentor.name,
+      courses: [],
       img_url: mentor.img_url
     }
     mentor.courses.each do |course|
