@@ -10,6 +10,10 @@ get '/' do
 	erb :mypage
 end
 
+get '/test' do
+  erb :test
+end
+
 get '/preview' do
   @camps = Camp.all.order('id asc')
   @courses = Course.all.order('id asc')
